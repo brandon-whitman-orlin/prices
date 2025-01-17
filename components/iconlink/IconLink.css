@@ -1,0 +1,15 @@
+.controls .icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--p);
+    color: inherit;
+    opacity: 0.6;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.controls .icon:hover {
+    opacity: 1;
+}

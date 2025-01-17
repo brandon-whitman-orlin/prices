@@ -1,0 +1,65 @@
+.info-card {
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    color: var(--text);
+    display: grid;
+    align-items: center;
+    height: fit-content;
+    gap: 0.5rem;
+    width: fit-content;
+    max-width: 45rem;
+}
+
+.title {
+    font-size: var(--h2);
+}
+
+.amount {
+    font-size: var(--h3);
+}
+
+.info-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.change {
+    font-size: var(--p);
+    min-height: var(--icon-size);
+    display: flex;
+    align-items: center;
+}
+
+.change .icon {
+    background: none;
+    border: none;
+    font-size: var(--p);
+    color: inherit;
+    opacity: 1;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5ch;
+    vertical-align: baseline;
+}
+
+.controls {
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
+    min-height: var(--icon-size);
+}
+
+.controls small {
+    font-size: var(--small);
+}
+
+.controls a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

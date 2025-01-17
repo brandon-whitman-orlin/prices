@@ -1,0 +1,176 @@
+/*-------------------------*/
+/* DEFAULT STYLING */
+/*-------------------------*/
+:root {
+
+  margin: 0 auto;
+  color-scheme: light dark;
+
+  --font-scale: 1.25;
+  --p: calc(0rem + (1rem * var(--font-scale)));
+  --h6: calc(-0.33rem + (1rem * var(--font-scale)));
+  --h5: calc(-0.17rem + (1rem * var(--font-scale)));
+  --h4: calc(0rem + (1rem * var(--font-scale)));
+  --h3: calc(0.17rem + (1rem * var(--font-scale)));
+  --h2: calc(0.5rem + (1rem * var(--font-scale)));
+  --h1: calc(1rem + (1rem * var(--font-scale)));
+  --small: calc(-0.25rem + (1rem * var(--font-scale)));
+  --smaller: calc(-0.4rem + (1rem * var(--font-scale)));
+
+  --padding: 1rem;
+  --border-radius: 0.75rem;
+  --icon-size: 1.5rem;
+
+  --positive: rgb(75, 0, 0);
+  --negative: rgb(0, 75, 0);
+
+  --text: #f6f3e4;
+  --background: #0c0a03;
+  --primary: #ceaf22;
+  --secondary: #88710c;
+  --accent: #c29f05;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #1b1809;
+    --background: #fcfaf3;
+    --primary: #ddbe31;
+    --secondary: #f3dc77;
+    --accent: #fad73d;
+  }
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+h5 {
+  font-size: var(--h5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+svg path {
+  fill: var(--customFill, currentColor);
+  transition: fill 0.3s ease-in-out;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+  font-size: var(--p);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+a,
+button,
+svg {
+  font-size: var(--p);
+  border: transparent;
+  outline: 2px solid transparent;
+  outline-offset: -0.5rem;
+  transition: all 0.3s ease-in-out;
+
+  text-decoration: none;
+  color: currentColor;
+}
+
+a:hover,
+button:hover {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+#root {
+  height: 500vh;
+  width: 100%;
+  background-color: var(--background);
+  isolation: isolate;
+}
+
+.app-container section {
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--grayed);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--grayed) rgba(0, 0, 0, 0.5);
+  }
+}
