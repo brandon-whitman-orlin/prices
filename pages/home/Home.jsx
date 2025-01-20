@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import InfoCard from '../../components/infocard/InfoCard';
-require('dotenv').config(); // Load environment variables from .env file (useful for local development)
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
