@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import InfoCard from '../../components/infocard/InfoCard';
+require('dotenv').config(); // Load environment variables from .env file (useful for local development)
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 import axios from "axios";
 
@@ -11,7 +14,7 @@ function Home() {
     useEffect(() => {
         const fetchGasData = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_URL}/api/gas`); // Your backend API
+                const response = await axios.get(`${backendUrl}/api/gas`);
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
@@ -43,7 +46,7 @@ function Home() {
 
         const fetchEggData = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_URL}/api/egg`); // Your backend API
+                const response = await axios.get(`${backendUrl}/api/egg`);
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
