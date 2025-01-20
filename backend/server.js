@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-require('dotenv').config(); // Load environment variables from .env file (useful for local development)
+// require('dotenv').config(); // Load environment variables from .env file (useful for local development)
 
 const app = express();
 const port = process.env.PORT || 5000; // Use the port Render provides or fallback to 5000
