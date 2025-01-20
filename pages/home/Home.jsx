@@ -39,7 +39,7 @@ function Home() {
 
                 setGasData(gasData);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching Gas data:', error);
             }
         };
 
@@ -71,7 +71,7 @@ function Home() {
 
                 setEggData(eggData);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching Egg data:', error);
             }
         };
 
