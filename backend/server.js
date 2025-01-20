@@ -3,9 +3,11 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');  // Import the cors package
 const app = express();
-const port = 5000;  // Choose a port for your backend server
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
 
-const customInaugurationDate = "2021-01-20";
+const customInaugurationDate = "2025-01-20";
 
 // Enable CORS for all requests
 app.use(cors());

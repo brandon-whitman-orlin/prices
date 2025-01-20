@@ -4,7 +4,7 @@ import InfoCard from '../../components/infocard/InfoCard';
 
 import axios from "axios";
 
-const inauguration = "2024-01-20";
+const inauguration = "2025-01-20";
 
 function Home() {
     const [gasData, setGasData] = useState(null);
