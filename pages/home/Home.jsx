@@ -4,8 +4,6 @@ import InfoCard from '../../components/infocard/InfoCard';
 
 import axios from "axios";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
 function Home() {
     const [gasData, setGasData] = useState(null);
     const [eggData, setEggData] = useState(null);
@@ -13,7 +11,7 @@ function Home() {
     useEffect(() => {
         const fetchGasData = async () => {
             try {
-                const response = await axios.get(`${backendUrl}/api/gas`); // Your backend API
+                const response = await axios.get(`${REACT_APP_BACKEND_URL}/api/gas`); // Your backend API
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
@@ -45,7 +43,7 @@ function Home() {
 
         const fetchEggData = async () => {
             try {
-                const response = await axios.get(`${backendUrl}/api/egg`); // Your backend API
+                const response = await axios.get(`${REACT_APP_BACKEND_URL}/api/egg`); // Your backend API
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
