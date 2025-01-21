@@ -17,11 +17,12 @@ app.use(cors()); // Enable CORS to allow requests from your frontend
 
 // Custom date for filtering data
 const customInaugurationDate = "2025-01-20";
+const customGasInaugurationDate = "2025-01-13";
 
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
     try {
-        const gasResponse = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=2020-01-20&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`, {
+        const gasResponse = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=2024-01-01&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`, {
         });
         const gasData = gasResponse.data["response"]["data"];
 
