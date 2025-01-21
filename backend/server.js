@@ -203,6 +203,7 @@ app.get('/api/unemployment', async (req, res) => {
         const mostRecentUnemploymentPeriod = unemploymentResultsSeries[0]["period"];
 
         // Extract the month number from the period (e.g., "M10" => 10)
+        console.log("Typeof for period: ", typeof mostRecentUnemploymentPeriod);
         const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
 
         // Format the date as "MM-01-YYYY"
