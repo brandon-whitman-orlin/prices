@@ -62,7 +62,7 @@ app.get('/api/gas', async (req, res) => {
         const inaugurationGasPrice = parseFloat(gasData2[0]["value"]);
         console.log("The price at inauguration was: ", inaugurationGasPrice);
 
-        const inaugurationGasPercentageChange = ((currentPrice - inaugurationGasPrice) / inaugurationGasPrice) * 100;
+        const inaugurationGasPercentageChange = ((currentGasPrice - inaugurationGasPrice) / inaugurationGasPrice) * 100;
         console.log("Giving us a percentage change since inauguration of: ", inaugurationGasPercentageChange);
 
         console.log("-------------------------");
