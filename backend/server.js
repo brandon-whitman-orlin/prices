@@ -117,30 +117,30 @@ app.get('/api/egg', async (req, res) => {
         const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
         console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
 
-        // const response2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
-        //     params: {
-        //         series_id: 'APU0000708111',
-        //         api_key: fredApiKey,
-        //         file_type: 'json',
-        //         limit: 5, // Limit to 5 results
-        //         sort_order: 'asc', // Sort in ascending order
-        //         observation_start: customInaugurationDate // Start from this date
-        //     }
-        // });
+        const eggResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+            params: {
+                series_id: 'APU0000708111',
+                api_key: fredApiKey,
+                file_type: 'json',
+                limit: 5, // Limit to 5 results
+                sort_order: 'asc', // Sort in ascending order
+                observation_start: customInaugurationDate // Start from this date
+            }
+        });
 
-        // const data2 = response2.data.observations;
-        // console.log("Egg Data 2: ", data2);
+        const eggData2 = eggResponse2.data.observations;
+        console.log("Egg Data 2: ", eggData2);
 
-        // const inaugurationDate = formatDate(data2[0]["date"]);
-        // console.log("The measure at inauguration was on: ", inaugurationDate);
+        const inaugurationEggDate = formatDate(eggData2[0]["date"]);
+        console.log("The measure at inauguration was on: ", inaugurationEggDate);
 
-        // const inaugurationPrice = parseFloat(data2[0]["value"]);
-        // console.log("The price at inauguration was: ", inaugurationPrice);
+        const inaugurationEggPrice = parseFloat(eggData2[0]["value"]);
+        console.log("The price at inauguration was: ", inaugurationEggPrice);
 
-        // const inaugurationPercentageChange = ((currentPrice - inaugurationPrice) / inaugurationPrice) * 100;
-        // console.log("Giving us a percentage change since inauguration of: ", inaugurationPercentageChange);
+        const inaugurationEggPercentageChange = ((currentEggPrice - inaugurationEggPrice) / inaugurationEggPrice) * 100;
+        console.log("Giving us a percentage change since inauguration of: ", inaugurationEggPercentageChange);
 
-        // console.log("-------------------------");
+        console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
