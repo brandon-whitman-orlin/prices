@@ -159,3 +159,8 @@ app.get('/api/test', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+const formatDate = (dateStr) => {
+    const [year, month, day] = dateStr.split("-");
+    return `${month}-${day}-${year}`;
+};
