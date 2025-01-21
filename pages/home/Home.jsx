@@ -4,9 +4,6 @@ import InfoCard from '../../components/infocard/InfoCard';
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
 
-const response = await axios.get(`${backendURL}/api/test`);
-console.log(response.data);
-
 import axios from "axios";
 
 function Home() {
@@ -15,8 +12,13 @@ function Home() {
     const [eggData, setEggData] = useState(null);
 
     useEffect(() => {
+
         const fetchGasData = async () => {
             try {
+
+                const response111 = await axios.get(`${backendURL}/api/test`);
+                console.log(response111.data);
+
                 const response = await axios.get(`${backendURL}/api/gas`);
 
                 // Extract and transform API response
