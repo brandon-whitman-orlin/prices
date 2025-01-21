@@ -169,6 +169,7 @@ app.get('/api/unemployment', async (req, res) => {
         const unemploymentRequestData = {
             seriesid: ['LNS14000000'], // Example series IDs
             startyear: '2024',
+            endyear: '2050',
         };
 
         // Make the POST request to the API
