@@ -16,8 +16,8 @@ console.log("From Render Environment (FRED) from Backend:", fredApiKey);
 app.use(cors()); // Enable CORS to allow requests from your frontend
 
 // Custom date for filtering data
-const customInaugurationDate = "2025-01-20";
 const customGasInaugurationDate = "2025-01-13"; // When gas was measured closest to but before the inauguration date
+const customEggInaugurationDate = "2025-01-20"; // When eggs were measured closest to but before the inauguration date
 
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
@@ -124,7 +124,7 @@ app.get('/api/egg', async (req, res) => {
                 file_type: 'json',
                 limit: 5, // Limit to 5 results
                 sort_order: 'asc', // Sort in ascending order
-                observation_start: customGasInaugurationDate // Start from this date
+                observation_start: customEggInaugurationDate // Start from this date
             }
         });
 
@@ -144,17 +144,17 @@ app.get('/api/egg', async (req, res) => {
 
         // Send the fetched data to the client
         res.json({
-            // currentPrice,
-            // mostRecentMeasure,
+            currentEggPrice,
+            mostRecentEggMeasure,
 
-            // lastPrice,
-            // lastMeasure,
+            lastEggPrice,
+            lastEggMeasure,
 
-            // dailyPercentageChange,
+            dailyEggPercentageChange,
 
-            // inaugurationDate,
-            // inaugurationPrice,
-            // inaugurationPercentageChange,
+            inaugurationEggDate,
+            inaugurationEggPrice,
+            inaugurationEggPercentageChange,
         });
     } catch (error) {
         console.error('Error fetching Egg data:', error);
