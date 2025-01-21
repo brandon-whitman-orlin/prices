@@ -21,9 +21,9 @@ const customInaugurationDate = "2025-01-20";
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
     try {
-        const response = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=2020-01-20&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`, {
+        const gasResponse = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=2020-01-20&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`, {
         });
-        const data = response.data["response"]["data"];
+        const gasData = gasResponse.data["response"]["data"];
 
         // console.log(typeof data);
         // console.log("Gas data[0]: ", data[0]);
@@ -34,30 +34,30 @@ app.get('/api/gas', async (req, res) => {
         // const mostRecentMeasureA = formatDate(data[0]["period"]);
         // console.log("mostRecentMeasureA: ", mostRecentMeasureA);
 
-        const mostRecentGasMeasure = formatDate(data[0]["period"]);
+        const mostRecentGasMeasure = formatDate(gasData[0]["period"]);
         console.log("Most recently measured on: ", mostRecentGasMeasure);
 
-        const currentGasPrice = parseFloat(data[0]["value"]);
+        const currentGasPrice = parseFloat(gasData[0]["value"]);
         console.log("The current price is: ", currentGasPrice);
 
-        const lastGasMeasure = formatDate(data[1]["period"]);
+        const lastGasMeasure = formatDate(gasData[1]["period"]);
         console.log("The last measure was on: ", lastGasMeasure);
 
-        const lastGasPrice = parseFloat(data[1]["value"]);
+        const lastGasPrice = parseFloat(gasData[1]["value"]);
         console.log("The last price was: ", lastGasPrice);
 
         const dailyGasPercentageChange = ((currentGasPrice - lastGasPrice) / lastGasPrice) * 100;
         console.log("Giving us a daily percentage change of: ", dailyGasPercentageChange);
 
-        const response2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
+        const gasResponse2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
         });
 
-        const data2 = response2.data["response"]["data"];
+        const gasData2 = gasResponse2.data["response"]["data"];
 
-        const inaugurationGasDate = formatDate(data2[0]["period"]);
+        const inaugurationGasDate = formatDate(gasData2[0]["period"]);
         console.log("The measure at inauguration was on: ", inaugurationGasDate);
 
-        const inaugurationGasPrice = parseFloat(data2[0]["value"]);
+        const inaugurationGasPrice = parseFloat(gasData2[0]["value"]);
         console.log("The price at inauguration was: ", inaugurationGasPrice);
 
         const inaugurationGasPercentageChange = ((currentPrice - inaugurationGasPrice) / inaugurationGasPrice) * 100;
