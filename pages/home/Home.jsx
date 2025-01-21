@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import InfoCard from '../../components/infocard/InfoCard';
-import dotenv from 'dotenv'
-dotenv.config()
 
 const eiaAPIKEY = process.env.EIA_API_KEY;
 const fredAPIKEY = process.env.FRED_API_KEY;

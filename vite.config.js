@@ -9,4 +9,5 @@ export default defineConfig({
     host: '0.0.0.0', // Bind to all network interfaces, including your local IP
     port: 5173,      // Default port (can be changed if needed)
   },
+  define: { 'process.env': process.env }
 });
