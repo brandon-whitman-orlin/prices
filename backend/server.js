@@ -199,8 +199,8 @@ app.get('/api/unemployment', async (req, res) => {
             });
         });
 
-        const mostRecentUnemploymentYear = series[0]["year"];
-        const mostRecentUnemploymentPeriod = series[0]["period"];
+        const mostRecentUnemploymentYear = unemploymentResultsSeries[0]["year"];
+        const mostRecentUnemploymentPeriod = unemploymentResultsSeries[0]["period"];
 
         // Extract the month number from the period (e.g., "M10" => 10)
         const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
@@ -262,8 +262,8 @@ app.get('/api/unemployment', async (req, res) => {
             // inaugurationEggPercentageChange,
         });
     } catch (error) {
-        console.error('Error fetching Egg data:', error);
-        res.status(500).json({ error: 'Error fetching Egg data' });
+        console.error('Error fetching Unemployment data:', error);
+        res.status(500).json({ error: 'Error fetching Unemployment data' });
     }
 });
 
