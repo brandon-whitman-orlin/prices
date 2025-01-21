@@ -4,6 +4,9 @@ import InfoCard from '../../components/infocard/InfoCard';
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
 
+const response = await axios.get(`${backendURL}/api/test`);
+console.log(response.data);
+
 import axios from "axios";
 
 function Home() {

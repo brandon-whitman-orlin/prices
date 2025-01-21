@@ -71,8 +71,8 @@ app.get('/api/gas', async (req, res) => {
             inaugurationPercentageChange,
         });
     } catch (error) {
-        console.error('Error fetching debt data:', error);
-        res.status(500).json({ error: 'Error fetching debt data' });
+        console.error('Error fetching Gas data:', error);
+        res.status(500).json({ error: 'Error fetching Gas data' });
     }
 });
 
@@ -146,9 +146,13 @@ app.get('/api/egg', async (req, res) => {
             inaugurationPercentageChange,
         });
     } catch (error) {
-        console.error('Error fetching debt data:', error);
-        res.status(500).json({ error: 'Error fetching debt data' });
+        console.error('Error fetching Egg data:', error);
+        res.status(500).json({ error: 'Error fetching Egg data' });
     }
+});
+
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'Backend is working!' });
 });
 
 // Start the server
