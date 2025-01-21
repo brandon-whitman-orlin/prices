@@ -31,6 +31,9 @@ app.get('/api/gas', async (req, res) => {
         const firstPeriod = data[0]["period"];
         console.log("First period: ", firstPeriod);
 
+        const mostRecentMeasureA = formatDate(data[0]["period"]);
+        console.log("mostRecentMeasureA: ", mostRecentMeasureA);
+
         const mostRecentMeasure = formatDate(data[0]["period"]);
         // console.log("Most recently measured on: ", mostRecentMeasure);
 
