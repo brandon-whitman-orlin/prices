@@ -179,25 +179,22 @@ app.get('/api/unemployment', async (req, res) => {
             },
         });
 
-        // console.log("Unemployment Response: ", unemploymentResponse);
-        const unemploymentResults = unemploymentResponse.data.Results
-        console.log("Unemployment Response Results: ", unemploymentResults);
         const unemploymentResultsSeries = unemploymentResponse.data.Results.series
-        console.log("Unemployment Response Results Series: ", unemploymentResultsSeries);
+        // console.log("Unemployment Response Results Series: ", unemploymentResultsSeries);
 
-        unemploymentResultsSeries.forEach(series => {
-            console.log(`Series ID: ${series.seriesID}`);
+        // unemploymentResultsSeries.forEach(series => {
+        //     console.log(`Series ID: ${series.seriesID}`);
 
-            // Access the data array within each series
-            series.data.forEach(item => {
-                console.log({
-                    year: item.year,
-                    period: item.period,
-                    value: item.value,
-                    footnotes: item.footnotes.map(fn => fn?.text || '').join(', '), // Concatenate footnotes if present
-                });
-            });
-        });
+        //     // Access the data array within each series
+        //     series.data.forEach(item => {
+        //         console.log({
+        //             year: item.year,
+        //             period: item.period,
+        //             value: item.value,
+        //             footnotes: item.footnotes.map(fn => fn?.text || '').join(', '), // Concatenate footnotes if present
+        //         });
+        //     });
+        // });
 
         const unemploymentData = unemploymentResultsSeries[0].data;
 
