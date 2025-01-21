@@ -17,7 +17,7 @@ app.use(cors()); // Enable CORS to allow requests from your frontend
 
 // Custom date for filtering data
 const customGasInaugurationDate = "2025-01-13"; // When gas was measured closest to but before the inauguration date
-const customEggInaugurationDate = "2025-01-20"; // When eggs were measured closest to but before the inauguration date
+const customEggInaugurationDate = "2024-12-01"; // When eggs were measured closest to but before the inauguration date
 
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
