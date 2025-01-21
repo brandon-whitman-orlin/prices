@@ -36,36 +36,36 @@ app.get('/api/gas', async (req, res) => {
         // console.log("mostRecentMeasureA: ", mostRecentMeasureA);
 
         const mostRecentGasMeasure = formatDate(gasData[0]["period"]);
-        console.log("Most recently measured on: ", mostRecentGasMeasure);
+        // console.log("Most recently measured on: ", mostRecentGasMeasure);
 
         const currentGasPrice = parseFloat(gasData[0]["value"]);
-        console.log("The current price is: ", currentGasPrice);
+        // console.log("The current price is: ", currentGasPrice);
 
         const lastGasMeasure = formatDate(gasData[1]["period"]);
-        console.log("The last measure was on: ", lastGasMeasure);
+        // console.log("The last measure was on: ", lastGasMeasure);
 
         const lastGasPrice = parseFloat(gasData[1]["value"]);
-        console.log("The last price was: ", lastGasPrice);
+        // console.log("The last price was: ", lastGasPrice);
 
         const dailyGasPercentageChange = ((currentGasPrice - lastGasPrice) / lastGasPrice) * 100;
-        console.log("Giving us a daily percentage change of: ", dailyGasPercentageChange);
+        // console.log("Giving us a daily percentage change of: ", dailyGasPercentageChange);
 
         const gasResponse2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customGasInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
         });
 
         const gasData2 = gasResponse2.data["response"]["data"];
-        console.log("gasData2: ", gasData2);
+        // console.log("gasData2: ", gasData2);
 
         const inaugurationGasDate = formatDate(gasData2[0]["period"]);
-        console.log("The measure at inauguration was on: ", inaugurationGasDate);
+        // console.log("The measure at inauguration was on: ", inaugurationGasDate);
 
         const inaugurationGasPrice = parseFloat(gasData2[0]["value"]);
-        console.log("The price at inauguration was: ", inaugurationGasPrice);
+        // console.log("The price at inauguration was: ", inaugurationGasPrice);
 
         const inaugurationGasPercentageChange = ((currentGasPrice - inaugurationGasPrice) / inaugurationGasPrice) * 100;
-        console.log("Giving us a percentage change since inauguration of: ", inaugurationGasPercentageChange);
+        // console.log("Giving us a percentage change since inauguration of: ", inaugurationGasPercentageChange);
 
-        console.log("-------------------------");
+        // console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
@@ -90,7 +90,7 @@ app.get('/api/gas', async (req, res) => {
 // Route to fetch egg price data
 app.get('/api/egg', async (req, res) => {
     try {
-        const response = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+        const eggResponse = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
             params: {
                 series_id: 'APU0000708111',
                 api_key: fredApiKey,
@@ -99,62 +99,62 @@ app.get('/api/egg', async (req, res) => {
                 sort_order: 'desc' // Sort in descending order
             }
         });
-        const data = response.data.observations;
-        // console.log("Egg Data: ", data);
+        const eggData = eggResponse.data.observations;
+        console.log("Egg Data: ", eggData);
 
-        const mostRecentMeasure = formatDate(data[0]["date"]);
+        // const mostRecentMeasure = formatDate(data[0]["date"]);
         // console.log("Most recently measured on: ", mostRecentMeasure);
 
-        const currentPrice = parseFloat(data[0]["value"]);
+        // const currentPrice = parseFloat(data[0]["value"]);
         // console.log("The current price is: ", currentPrice);
 
-        const lastMeasure = formatDate(data[1]["date"]);
+        // const lastMeasure = formatDate(data[1]["date"]);
         // console.log("The last measure was on: ", lastMeasure);
 
-        const lastPrice = parseFloat(data[1]["value"]);
+        // const lastPrice = parseFloat(data[1]["value"]);
         // console.log("The last price was: ", lastPrice);
 
-        const dailyPercentageChange = ((currentPrice - lastPrice) / lastPrice) * 100;
+        // const dailyPercentageChange = ((currentPrice - lastPrice) / lastPrice) * 100;
         // console.log("Giving us a daily percentage change of: ", dailyPercentageChange);
 
-        const response2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
-            params: {
-                series_id: 'APU0000708111',
-                api_key: fredApiKey,
-                file_type: 'json',
-                limit: 5, // Limit to 5 results
-                sort_order: 'asc', // Sort in ascending order
-                observation_start: customInaugurationDate // Start from this date
-            }
-        });
+        // const response2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+        //     params: {
+        //         series_id: 'APU0000708111',
+        //         api_key: fredApiKey,
+        //         file_type: 'json',
+        //         limit: 5, // Limit to 5 results
+        //         sort_order: 'asc', // Sort in ascending order
+        //         observation_start: customInaugurationDate // Start from this date
+        //     }
+        // });
 
-        const data2 = response2.data.observations;
+        // const data2 = response2.data.observations;
         // console.log("Egg Data 2: ", data2);
 
-        const inaugurationDate = formatDate(data2[0]["date"]);
+        // const inaugurationDate = formatDate(data2[0]["date"]);
         // console.log("The measure at inauguration was on: ", inaugurationDate);
 
-        const inaugurationPrice = parseFloat(data2[0]["value"]);
+        // const inaugurationPrice = parseFloat(data2[0]["value"]);
         // console.log("The price at inauguration was: ", inaugurationPrice);
 
-        const inaugurationPercentageChange = ((currentPrice - inaugurationPrice) / inaugurationPrice) * 100;
+        // const inaugurationPercentageChange = ((currentPrice - inaugurationPrice) / inaugurationPrice) * 100;
         // console.log("Giving us a percentage change since inauguration of: ", inaugurationPercentageChange);
 
         // console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
-            currentPrice,
-            mostRecentMeasure,
+            // currentPrice,
+            // mostRecentMeasure,
 
-            lastPrice,
-            lastMeasure,
+            // lastPrice,
+            // lastMeasure,
 
-            dailyPercentageChange,
+            // dailyPercentageChange,
 
-            inaugurationDate,
-            inaugurationPrice,
-            inaugurationPercentageChange,
+            // inaugurationDate,
+            // inaugurationPrice,
+            // inaugurationPercentageChange,
         });
     } catch (error) {
         console.error('Error fetching Egg data:', error);
