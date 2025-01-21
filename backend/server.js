@@ -53,6 +53,7 @@ app.get('/api/gas', async (req, res) => {
         });
 
         const gasData2 = gasResponse2.data["response"]["data"];
+        console.log("gasData2: ", gasData2);
 
         const inaugurationGasDate = formatDate(gasData2[0]["period"]);
         console.log("The measure at inauguration was on: ", inaugurationGasDate);
