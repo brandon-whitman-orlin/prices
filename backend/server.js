@@ -179,9 +179,11 @@ app.get('/api/unemployment', async (req, res) => {
             },
         });
 
-        console.log("Unemployment Response: ", unemploymentResponse);
+        // console.log("Unemployment Response: ", unemploymentResponse);
         const unemploymentResults = unemploymentResponse.data.Results
         console.log("Unemployment Response Results: ", unemploymentResults);
+        const unemploymentResultsSeries = unemploymentResponse.data.Results.series
+        console.log("Unemployment Response Results Series: ", unemploymentResultsSeries);
 
         // const mostRecentEggMeasure = formatDate(eggData[0]["date"]);
         // console.log("Most recently measured on: ", mostRecentEggMeasure);
