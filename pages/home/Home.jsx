@@ -22,25 +22,25 @@ function Home() {
                 const response = await axios.get(`${backendURL}/api/gas`);
 
                 // Extract and transform API response
-                const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
+                const { currentGasPrice, mostRecentGasMeasure, lastGasMeasure, dailyGasPercentageChange, inaugurationGasDate, inaugurationGasPercentageChange, } = response.data;
 
                 // Combine hardcoded and dynamic values
                 const gasData = {
                     title: "Gasoline Prices",
                     desire: "negative",
-                    inauguration: inaugurationDate,
+                    inauguration: inaugurationGasDate,
                     description: "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
                     sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
                     units: "per Gallon",
                     frequency: "week",
 
-                    lastUpdated: mostRecentMeasure,
-                    lastMeasure: lastMeasure,
+                    lastUpdated: mostRecentGasMeasure,
+                    lastMeasure: lastGasMeasure,
 
-                    currentPrice: currentPrice,
-                    dailyChange: dailyPercentageChange.toFixed(2),
+                    currentPrice: currentGasPrice,
+                    dailyChange: dailyGasPercentageChange.toFixed(2),
 
-                    inaugurationPercentageChange: inaugurationPercentageChange.toFixed(2),
+                    inaugurationPercentageChange: inaugurationGasPercentageChange.toFixed(2),
                 };
 
                 setGasData(gasData);
