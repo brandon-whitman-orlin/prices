@@ -102,16 +102,16 @@ app.get('/api/egg', async (req, res) => {
         const eggData = eggResponse.data.observations;
         console.log("Egg Data: ", eggData);
 
-        const mostRecentEggMeasure = formatDate(data[0]["date"]);
+        const mostRecentEggMeasure = formatDate(eggData[0]["date"]);
         console.log("Most recently measured on: ", mostRecentEggMeasure);
 
-        const currentEggPrice = parseFloat(data[0]["value"]);
+        const currentEggPrice = parseFloat(eggData[0]["value"]);
         console.log("The current price is: ", currentEggPrice);
 
-        const lastEggMeasure = formatDate(data[1]["date"]);
+        const lastEggMeasure = formatDate(eggData[1]["date"]);
         console.log("The last measure was on: ", lastEggMeasure);
 
-        const lastEggPrice = parseFloat(data[1]["value"]);
+        const lastEggPrice = parseFloat(eggData[1]["value"]);
         console.log("The last price was: ", lastEggPrice);
 
         const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
