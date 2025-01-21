@@ -34,8 +34,8 @@ app.get('/api/gas', async (req, res) => {
         const mostRecentMeasureA = formatDate(data[0]["period"]);
         console.log("mostRecentMeasureA: ", mostRecentMeasureA);
 
-        const mostRecentMeasure = formatDate(data[0]["period"]);
-        // console.log("Most recently measured on: ", mostRecentMeasure);
+        const mostRecentMeasureB = formatDate(data[0]["period"]);
+        console.log("Most recently measured on: ", mostRecentMeasureB);
 
         const currentPrice = parseFloat(data[0]["value"]);
         // console.log("The current price is: ", currentPrice);
