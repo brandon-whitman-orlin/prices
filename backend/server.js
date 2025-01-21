@@ -167,7 +167,7 @@ app.get('/api/unemployment', async (req, res) => {
     try {
         // Define the request payload
         const unemploymentRequestData = {
-            seriesid: ['CES0800000003'], // Example series IDs
+            seriesid: ['LNS14000000'], // Example series IDs
             startyear: '2020',
             endyear: '2024',
         };
