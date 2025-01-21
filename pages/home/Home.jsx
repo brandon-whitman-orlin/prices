@@ -19,7 +19,7 @@ function Home() {
             try {
 
                 const response111 = await axios.get(`${backendURL}/api/test`);
-                console.log(response111.data);
+                // console.log(response111.data);
 
                 const response = await axios.get(`${backendURL}/api/gas`);
 
