@@ -33,6 +33,10 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+
+    --positive: rgb(225, 90, 90);
+    --negative: rgb(90, 225, 90);
+
     --text: #1b1809;
     --background: #fcfaf3;
     --primary: #ddbe31;
