@@ -4,16 +4,17 @@ import InfoCard from '../../components/infocard/InfoCard';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
+console.log("Backend URL:", backendUrl); // Check the value in the console
+
+console.log(`Requesting data from: ${backendUrl}/api/gas`);
+
+
 import axios from "axios";
 
 function Home() {
 
-    console.log("Backend URL:", backendUrl); // Check the value in the console
-
     const [gasData, setGasData] = useState(null);
     const [eggData, setEggData] = useState(null);
-
-    console.log(`Requesting data from: ${backendUrl}/api/gas`);
 
     useEffect(() => {
         const fetchGasData = async () => {
