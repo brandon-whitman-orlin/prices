@@ -2,17 +2,12 @@ import React, { useEffect, useState } from "react";
 import './Home.css';
 import InfoCard from '../../components/infocard/InfoCard';
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
-console.log("Backend URL:", backendUrl); // Check the value in the console
-
-console.log(`Requesting data from: ${backendUrl}/api/gas`);
-
-console.log("Environment Variables:", process.env);
-
-console.log("From Render Environment (EIA):", REACT_EIA_API_KEY);
-console.log("From Render Environment (FRED):", REACT_FRED_API_KEY);
-console.log("From Render Environment (BACKEND):", REACT_APP_BACKEND_URL);
+const eiaAPIKEY = process.env.EIA_API_KEY;
+const fredAPIKEY = process.env.FRED_API_KEY;
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+console.log("From Render Environment (EIA):", eiaAPIKEY);
+console.log("From Render Environment (FRED):", fredAPIKEY);
+console.log("From Render Environment (BACKEND):", backendURL);
 
 
 import axios from "axios";
