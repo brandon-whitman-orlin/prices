@@ -199,8 +199,16 @@ app.get('/api/unemployment', async (req, res) => {
             });
         });
 
-        // const mostRecentEggMeasure = formatDate(eggData[0]["date"]);
-        // console.log("Most recently measured on: ", mostRecentEggMeasure);
+        const mostRecentUnemploymentYear = series[0]["year"];
+        const mostRecentUnemploymentPeriod = series[0]["period"];
+
+        // Extract the month number from the period (e.g., "M10" => 10)
+        const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
+
+        // Format the date as "MM-01-YYYY"
+        const mostRecentUnemploymentMeasure = `${String(monthNumber).padStart(2, '0')}-01-${mostRecentUnemploymentYear}`;
+
+        console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
 
         // const currentEggPrice = parseFloat(eggData[0]["value"]);
         // console.log("The current price is: ", currentEggPrice);
