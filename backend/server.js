@@ -25,6 +25,7 @@ app.get('/api/gas', async (req, res) => {
         });
         const data = response.data["response"]["data"];
 
+        console.log(typeof data);
         console.log("Gas data[0]: ", data[0]);
 
         const mostRecentMeasure = formatDate(data[0]["period"]);
