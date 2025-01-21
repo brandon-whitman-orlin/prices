@@ -212,8 +212,8 @@ app.get('/api/unemployment', async (req, res) => {
         const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
         console.log("The current rate is: ", currentUnemploymentRate);
 
-        const lastUnemploymentYear = unemploymentData[0]["year"];
-        const lastUnemploymentPeriod = unemploymentData[0]["period"];
+        const lastUnemploymentYear = unemploymentData[1]["year"];
+        const lastUnemploymentPeriod = unemploymentData[1]["period"];
 
         // Extract the month number from the period (e.g., "M10" => 10)
         const lastmonthNumber = parseInt(lastUnemploymentPeriod.substring(1));
