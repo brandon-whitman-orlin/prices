@@ -11,6 +11,8 @@ function Home() {
     const [gasData, setGasData] = useState(null);
     const [eggData, setEggData] = useState(null);
 
+    const [unemploymentData, setUnemploymentData] = useState(null);
+
     useEffect(() => {
 
         const fetchGasData = async () => {
@@ -81,11 +83,44 @@ function Home() {
             }
         };
 
+        const fetchUnemploymentData = async () => {
+            try {
+                const response = await axios.get(`${backendURL}/api/unemployment`);
+
+                // Extract and transform API response
+                const { currentUnemploymentPrice, mostRecentUnemploymentMeasure, lastUnemploymentMeasure, dailyUnemploymentPercentageChange, inaugurationUnemploymentDate, inaugurationUnemploymentPercentageChange, } = response.data;
+
+                // Combine hardcoded and dynamic values
+                const gasData = {
+                    title: "Unemployment",
+                    desire: "negative",
+                    inauguration: inaugurationUnemploymentDate,
+                    description: "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
+                    sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
+                    units: "per Gallon",
+                    frequency: "week",
+
+                    lastUpdated: mostRecentUnemploymentMeasure,
+                    lastMeasure: lastUnemploymentMeasure,
+
+                    currentPrice: currentUnemploymentPrice,
+                    dailyChange: dailyUnemploymentPercentageChange.toFixed(2),
+
+                    inaugurationPercentageChange: inaugurationUnemploymentPercentageChange.toFixed(2),
+                };
+
+                setUnemploymentData(unemploymentData);
+            } catch (error) {
+                console.error('Error fetching Unemployment data:', error);
+            }
+        };
+
         fetchGasData();
         fetchEggData();
+        fetchUnemploymentData();
     }, []);
 
-    if (!gasData || !eggData) {
+    if (!gasData || !eggData || !unemploymentData) {
         return <div>Loading...</div>;
     }
 
@@ -93,6 +128,7 @@ function Home() {
         <section className="home">
             <InfoCard info={gasData} />
             <InfoCard info={eggData} />
+            <InfoCard info={unemploymentData} />
         </section>
     );
 }

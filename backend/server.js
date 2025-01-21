@@ -162,6 +162,85 @@ app.get('/api/egg', async (req, res) => {
     }
 });
 
+// Route to fetch unemployment price data
+app.get('/api/unemployment', async (req, res) => {
+    try {
+        // Define the request payload
+        const unemploymentRequestData = {
+            seriesid: ['CUUR0000SA0', 'SUUR0000SA0'], // Example series IDs
+            startyear: '2011',
+            endyear: '2014',
+        };
+
+        // Make the POST request to the API
+        const unemploymentResponse = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        console.log("Unemployment Response: ", unemploymentResponse);
+
+        // const mostRecentEggMeasure = formatDate(eggData[0]["date"]);
+        // console.log("Most recently measured on: ", mostRecentEggMeasure);
+
+        // const currentEggPrice = parseFloat(eggData[0]["value"]);
+        // console.log("The current price is: ", currentEggPrice);
+
+        // const lastEggMeasure = formatDate(eggData[1]["date"]);
+        // console.log("The last measure was on: ", lastEggMeasure);
+
+        // const lastEggPrice = parseFloat(eggData[1]["value"]);
+        // console.log("The last price was: ", lastEggPrice);
+
+        // const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
+        // console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
+
+        // const eggResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+        //     params: {
+        //         series_id: 'APU0000708111',
+        //         api_key: fredApiKey,
+        //         file_type: 'json',
+        //         limit: 5, // Limit to 5 results
+        //         sort_order: 'asc', // Sort in ascending order
+        //         observation_start: customEggInaugurationDate // Start from this date
+        //     }
+        // });
+
+        // const eggData2 = eggResponse2.data.observations;
+        // console.log("Egg Data 2: ", eggData2);
+
+        // const inaugurationEggDate = formatDate(eggData2[0]["date"]);
+        // console.log("The measure at inauguration was on: ", inaugurationEggDate);
+
+        // const inaugurationEggPrice = parseFloat(eggData2[0]["value"]);
+        // console.log("The price at inauguration was: ", inaugurationEggPrice);
+
+        // const inaugurationEggPercentageChange = ((currentEggPrice - inaugurationEggPrice) / inaugurationEggPrice) * 100;
+        // console.log("Giving us a percentage change since inauguration of: ", inaugurationEggPercentageChange);
+
+        // console.log("-------------------------");
+
+        // Send the fetched data to the client
+        res.json({
+            // currentEggPrice,
+            // mostRecentEggMeasure,
+
+            // lastEggPrice,
+            // lastEggMeasure,
+
+            // dailyEggPercentageChange,
+
+            // inaugurationEggDate,
+            // inaugurationEggPrice,
+            // inaugurationEggPercentageChange,
+        });
+    } catch (error) {
+        console.error('Error fetching Egg data:', error);
+        res.status(500).json({ error: 'Error fetching Egg data' });
+    }
+});
+
 app.get('/api/test', (req, res) => {
     res.json({ message: 'Backend is working!' });
 });
