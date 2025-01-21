@@ -8,6 +8,7 @@ console.log("Backend URL:", backendUrl); // Check the value in the console
 
 console.log(`Requesting data from: ${backendUrl}/api/gas`);
 
+console.log("Environment Variables:", process.env);
 
 import axios from "axios";
 
