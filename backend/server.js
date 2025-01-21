@@ -27,6 +27,7 @@ app.get('/api/gas', async (req, res) => {
 
         console.log(typeof data);
         console.log("Gas data[0]: ", data[0]);
+        console.log('Gas data[0]["period"]: ', data[0]["period"]);
 
         const mostRecentMeasure = formatDate(data[0]["period"]);
         // console.log("Most recently measured on: ", mostRecentMeasure);
