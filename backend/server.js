@@ -102,20 +102,20 @@ app.get('/api/egg', async (req, res) => {
         const eggData = eggResponse.data.observations;
         console.log("Egg Data: ", eggData);
 
-        // const mostRecentMeasure = formatDate(data[0]["date"]);
-        // console.log("Most recently measured on: ", mostRecentMeasure);
+        const mostRecentEggMeasure = formatDate(data[0]["date"]);
+        console.log("Most recently measured on: ", mostRecentEggMeasure);
 
-        // const currentPrice = parseFloat(data[0]["value"]);
-        // console.log("The current price is: ", currentPrice);
+        const currentEggPrice = parseFloat(data[0]["value"]);
+        console.log("The current price is: ", currentEggPrice);
 
-        // const lastMeasure = formatDate(data[1]["date"]);
-        // console.log("The last measure was on: ", lastMeasure);
+        const lastEggMeasure = formatDate(data[1]["date"]);
+        console.log("The last measure was on: ", lastEggMeasure);
 
-        // const lastPrice = parseFloat(data[1]["value"]);
-        // console.log("The last price was: ", lastPrice);
+        const lastEggPrice = parseFloat(data[1]["value"]);
+        console.log("The last price was: ", lastEggPrice);
 
-        // const dailyPercentageChange = ((currentPrice - lastPrice) / lastPrice) * 100;
-        // console.log("Giving us a daily percentage change of: ", dailyPercentageChange);
+        const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
+        console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
 
         // const response2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
         //     params: {
