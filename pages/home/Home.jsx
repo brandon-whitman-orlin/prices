@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 import './Home.css';
 import InfoCard from '../../components/infocard/InfoCard';
 
-const eiaAPIKEY = process.env.EIA_API_KEY;
-const fredAPIKEY = process.env.FRED_API_KEY;
 const backendURL = process.env.REACT_APP_BACKEND_URL;
-console.log("From Render Environment (EIA):", eiaAPIKEY);
-console.log("From Render Environment (FRED):", fredAPIKEY);
-console.log("From Render Environment (BACKEND):", backendURL);
-
 
 import axios from "axios";
 
