@@ -54,25 +54,25 @@ function Home() {
                 const response = await axios.get(`${backendURL}/api/egg`);
 
                 // Extract and transform API response
-                const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
+                const { currentEggPrice, mostRecentEggMeasure, lastEggMeasure, dailyEggPercentageChange, inaugurationEggDate, inaugurationEggPercentageChange, } = response.data;
 
                 // Combine hardcoded and dynamic values
                 const eggData = {
                     title: "Egg Prices",
                     desire: "negative",
-                    inauguration: inaugurationDate,
+                    inauguration: inaugurationEggDate,
                     description: "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
                     sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
                     units: "a Dozen",
                     frequency: "month",
 
-                    lastUpdated: mostRecentMeasure,
-                    lastMeasure: lastMeasure,
+                    lastUpdated: mostRecentEggMeasure,
+                    lastMeasure: lastEggMeasure,
 
-                    currentPrice: currentPrice,
-                    dailyChange: dailyPercentageChange.toFixed(2),
+                    currentPrice: currentEggPrice,
+                    dailyChange: dailyEggPercentageChange.toFixed(2),
 
-                    inaugurationPercentageChange: inaugurationPercentageChange.toFixed(2),
+                    inaugurationPercentageChange: inaugurationEggPercentageChange.toFixed(2),
                 };
 
                 setEggData(eggData);
