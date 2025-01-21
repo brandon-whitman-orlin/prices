@@ -215,14 +215,22 @@ app.get('/api/unemployment', async (req, res) => {
         const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
         console.log("The current rate is: ", currentUnemploymentRate);
 
-        // const lastEggMeasure = formatDate(eggData[1]["date"]);
-        // console.log("The last measure was on: ", lastEggMeasure);
+        const lastUnemploymentYear = unemploymentData[0]["year"];
+        const lastUnemploymentPeriod = unemploymentData[0]["period"];
 
-        // const lastEggPrice = parseFloat(eggData[1]["value"]);
-        // console.log("The last price was: ", lastEggPrice);
+        // Extract the month number from the period (e.g., "M10" => 10)
+        const lastmonthNumber = parseInt(lastUnemploymentPeriod.substring(1));
 
-        // const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
-        // console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
+        // Format the date as "MM-01-YYYY"
+        const lastUnemploymentMeasure = `${String(lastmonthNumber).padStart(2, '0')}-01-${lastUnemploymentYear}`;
+
+        console.log("The last measure was on: ", lastUnemploymentMeasure);
+
+        const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
+        console.log("The last rate was: ", lastUnemploymentRate);
+
+        const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
+        console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
 
         // const eggResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
         //     params: {
