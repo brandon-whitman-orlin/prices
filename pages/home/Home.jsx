@@ -14,7 +14,7 @@ function Home() {
     useEffect(() => {
         const fetchGasData = async () => {
             try {
-                const response = await axios.get(`${backendUrl}/api/gas`);
+                const response = await axios.get(`${backendURL}/api/gas`);
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
@@ -46,7 +46,7 @@ function Home() {
 
         const fetchEggData = async () => {
             try {
-                const response = await axios.get(`${backendUrl}/api/egg`);
+                const response = await axios.get(`${backendURL}/api/egg`);
 
                 // Extract and transform API response
                 const { currentPrice, mostRecentMeasure, lastMeasure, dailyPercentageChange, inaugurationDate, inaugurationPercentageChange, } = response.data;
