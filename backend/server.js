@@ -18,11 +18,6 @@ app.use(cors()); // Enable CORS to allow requests from your frontend
 // Custom date for filtering data
 const customInaugurationDate = "2025-01-20";
 
-const formatDate = (dateStr) => {
-    const [year, month, day] = dateStr.split("-");
-    return `${month}-${day}-${year}`;
-};
-
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
     try {
@@ -168,3 +163,8 @@ app.get('/api/test', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+const formatDate = (dateStr) => {
+    const [year, month, day] = dateStr.split("-");
+    return `${month}-${day}-${year}`;
+};
