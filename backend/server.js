@@ -124,7 +124,7 @@ app.get('/api/egg', async (req, res) => {
                 file_type: 'json',
                 limit: 5, // Limit to 5 results
                 sort_order: 'asc', // Sort in ascending order
-                observation_start: customInaugurationDate // Start from this date
+                observation_start: customGasInaugurationDate // Start from this date
             }
         });
 
