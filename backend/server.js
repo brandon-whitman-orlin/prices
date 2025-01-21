@@ -199,10 +199,10 @@ app.get('/api/unemployment', async (req, res) => {
             });
         });
 
-        console.log("Series[0].data[0]", unemploymentResultsSeries[0].data[0]);
+        const firstResult = unemploymentResultsSeries[0].data[0]
 
-        const mostRecentUnemploymentYear = unemploymentResultsSeries[0]["year"];
-        const mostRecentUnemploymentPeriod = unemploymentResultsSeries[0]["period"];
+        const mostRecentUnemploymentYear = firstResult["year"];
+        const mostRecentUnemploymentPeriod = firstResult["period"];
 
         // Extract the month number from the period (e.g., "M10" => 10)
         const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
