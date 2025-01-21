@@ -10,8 +10,8 @@ console.log(`Requesting data from: ${backendUrl}/api/gas`);
 
 console.log("Environment Variables:", process.env);
 
-console.log("From Render Environment (EIA):", EIA_API_KEY);
-console.log("From Render Environment (FRED):", FRED_API_KEY);
+console.log("From Render Environment (EIA):", REACT_EIA_API_KEY);
+console.log("From Render Environment (FRED):", REACT_FRED_API_KEY);
 console.log("From Render Environment (BACKEND):", REACT_APP_BACKEND_URL);
 
 
