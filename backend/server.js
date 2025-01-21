@@ -25,7 +25,7 @@ app.get('/api/gas', async (req, res) => {
         });
         const data = response.data["response"]["data"];
 
-        console.log("Egg response.data: ", response.data);
+        console.log("Egg response.data: ", response.data["response"]["data"]);
 
         const mostRecentMeasure = formatDate(data[0]["period"]);
         // console.log("Most recently measured on: ", mostRecentMeasure);
