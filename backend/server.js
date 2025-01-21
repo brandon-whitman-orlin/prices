@@ -199,7 +199,7 @@ app.get('/api/unemployment', async (req, res) => {
             });
         });
 
-        console.log("Series[0]", mostRecentUnemploymentPeriod[0]);
+        console.log("Series[0]", unemploymentResultsSeries[0]);
 
         const mostRecentUnemploymentYear = unemploymentResultsSeries[0]["year"];
         const mostRecentUnemploymentPeriod = unemploymentResultsSeries[0]["period"];
