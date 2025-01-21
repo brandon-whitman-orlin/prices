@@ -25,59 +25,59 @@ app.get('/api/gas', async (req, res) => {
         });
         const data = response.data["response"]["data"];
 
-        console.log(typeof data);
-        console.log("Gas data[0]: ", data[0]);
-        console.log("Gas data[0][\"period\"]: ", data[0]["period"]);
-        const firstPeriod = data[0]["period"];
-        console.log("First period: ", firstPeriod);
+        // console.log(typeof data);
+        // console.log("Gas data[0]: ", data[0]);
+        // console.log("Gas data[0][\"period\"]: ", data[0]["period"]);
+        // const firstPeriod = data[0]["period"];
+        // console.log("First period: ", firstPeriod);
 
-        const mostRecentMeasureA = formatDate(data[0]["period"]);
-        console.log("mostRecentMeasureA: ", mostRecentMeasureA);
+        // const mostRecentMeasureA = formatDate(data[0]["period"]);
+        // console.log("mostRecentMeasureA: ", mostRecentMeasureA);
 
-        const mostRecentMeasure = formatDate(data[0]["period"]);
-        console.log("Most recently measured on: ", mostRecentMeasure);
+        const mostRecentGasMeasure = formatDate(data[0]["period"]);
+        console.log("Most recently measured on: ", mostRecentGasMeasure);
 
-        const currentPrice = parseFloat(data[0]["value"]);
-        // console.log("The current price is: ", currentPrice);
+        const currentGasPrice = parseFloat(data[0]["value"]);
+        console.log("The current price is: ", currentGasPrice);
 
-        const lastMeasure = formatDate(data[1]["period"]);
-        // console.log("The last measure was on: ", lastMeasure);
+        const lastGasMeasure = formatDate(data[1]["period"]);
+        console.log("The last measure was on: ", lastGasMeasure);
 
-        const lastPrice = parseFloat(data[1]["value"]);
-        // console.log("The last price was: ", lastPrice);
+        const lastGasPrice = parseFloat(data[1]["value"]);
+        console.log("The last price was: ", lastGasPrice);
 
-        const dailyPercentageChange = ((currentPrice - lastPrice) / lastPrice) * 100;
-        // console.log("Giving us a daily percentage change of: ", dailyPercentageChange);
+        const dailyGasPercentageChange = ((currentGasPrice - lastGasPrice) / lastGasPrice) * 100;
+        console.log("Giving us a daily percentage change of: ", dailyGasPercentageChange);
 
         const response2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
         });
 
         const data2 = response2.data["response"]["data"];
 
-        const inaugurationDate = formatDate(data2[0]["period"]);
-        // console.log("The measure at inauguration was on: ", inaugurationDate);
+        const inaugurationGasDate = formatDate(data2[0]["period"]);
+        console.log("The measure at inauguration was on: ", inaugurationGasDate);
 
-        const inaugurationPrice = parseFloat(data2[0]["value"]);
-        // console.log("The price at inauguration was: ", inaugurationPrice);
+        const inaugurationGasPrice = parseFloat(data2[0]["value"]);
+        console.log("The price at inauguration was: ", inaugurationGasPrice);
 
-        const inaugurationPercentageChange = ((currentPrice - inaugurationPrice) / inaugurationPrice) * 100;
-        // console.log("Giving us a percentage change since inauguration of: ", inaugurationPercentageChange);
+        const inaugurationGasPercentageChange = ((currentPrice - inaugurationGasPrice) / inaugurationGasPrice) * 100;
+        console.log("Giving us a percentage change since inauguration of: ", inaugurationGasPercentageChange);
 
-        // console.log("-------------------------");
+        console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
-            currentPrice,
-            mostRecentMeasure,
+            currentGasPrice,
+            mostRecentGasMeasure,
 
-            lastPrice,
-            lastMeasure,
+            lastGasPrice,
+            lastGasMeasure,
 
-            dailyPercentageChange,
+            dailyGasPercentageChange,
 
-            inaugurationDate,
-            inaugurationPrice,
-            inaugurationPercentageChange,
+            inaugurationGasDate,
+            inaugurationGasPrice,
+            inaugurationGasPercentageChange,
         });
     } catch (error) {
         console.error('Error fetching Gas data:', error);
