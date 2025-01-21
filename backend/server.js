@@ -9,6 +9,10 @@ const port = process.env.PORT || 5000; // Use the port Render provides or fallba
 const eiaApiKey = process.env.EIA_API_KEY;
 const fredApiKey = process.env.FRED_API_KEY;
 
+console.log("From Render Environment in Backend (EIA):", EIA_API_KEY);
+console.log("From Render Environment in Backend (FRED):", FRED_API_KEY);
+console.log("From Render Environment in Backend (BACKEND):", REACT_APP_BACKEND_URL);
+
 // Middleware
 app.use(cors()); // Enable CORS to allow requests from your frontend
 
