@@ -7,7 +7,7 @@ import { ReactComponent as UpGraph } from '../../assets/icons/upgraph.svg';
 import { ReactComponent as DownGraph } from '../../assets/icons/downgraph.svg';
 
 const InfoCard = ({ info }) => {
-    const { desire, inaugurationPercentageChange, title, currentPrice, units, dailyChange, frequency, lastMeasure, inauguration, description, lastUpdated, sourceUrl } = info;
+    const { desire, inaugurationPercentageChange, title, currentMeasure, units, dailyChange, frequency, lastMeasure, inauguration, description, lastUpdated, sourceUrl } = info;
 
     const backgroundColor =
         (desire === 'positive' && inaugurationPercentageChange > 0) || (desire === 'negative' && inaugurationPercentageChange < 0)
@@ -22,7 +22,7 @@ const InfoCard = ({ info }) => {
             {/* Header with Title and Amount */}
             <div className="info-card-header">
                 <h2 className="title">{title}</h2>
-                <h3 className="amount">${currentPrice} {units}</h3>
+                <h3 className="amount">${currentMeasure} {units}</h3>
             </div>
 
             <h3 className="change">

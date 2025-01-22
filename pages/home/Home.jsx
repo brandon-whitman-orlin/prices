@@ -39,7 +39,7 @@ function Home() {
                     lastUpdated: mostRecentGasMeasure,
                     lastMeasure: lastGasMeasure,
 
-                    currentPrice: currentGasPrice,
+                    currentMeasure: currentGasPrice,
                     dailyChange: dailyGasPercentageChange.toFixed(2),
 
                     inaugurationPercentageChange: inaugurationGasPercentageChange.toFixed(2),
@@ -71,7 +71,7 @@ function Home() {
                     lastUpdated: mostRecentEggMeasure,
                     lastMeasure: lastEggMeasure,
 
-                    currentPrice: currentEggPrice,
+                    currentMeasure: currentEggPrice,
                     dailyChange: dailyEggPercentageChange.toFixed(2),
 
                     inaugurationPercentageChange: inaugurationEggPercentageChange.toFixed(2),
@@ -88,22 +88,22 @@ function Home() {
                 const response = await axios.get(`${backendURL}/api/unemployment`);
 
                 // Extract and transform API response
-                const { currentUnemploymentPrice, mostRecentUnemploymentMeasure, lastUnemploymentMeasure, dailyUnemploymentPercentageChange, inaugurationUnemploymentDate, inaugurationUnemploymentPercentageChange, } = response.data;
+                const { currentUnemploymentRate, mostRecentUnemploymentMeasure, lastUnemploymentMeasure, dailyUnemploymentPercentageChange, inaugurationUnemploymentDate, inaugurationUnemploymentPercentageChange, } = response.data;
 
                 // Combine hardcoded and dynamic values
                 const gasData = {
                     title: "Unemployment",
                     desire: "negative",
                     inauguration: inaugurationUnemploymentDate,
-                    description: "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
-                    sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
+                    description: "The unemployment rate is the percentage of the civilian labor force—comprising individuals aged 16 and older, residing in the 50 states or D.C., and not institutionalized or on active military duty—who are unemployed.",
+                    sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
                     units: "per Gallon",
-                    frequency: "week",
+                    frequency: "month",
 
                     lastUpdated: mostRecentUnemploymentMeasure,
                     lastMeasure: lastUnemploymentMeasure,
 
-                    currentPrice: currentUnemploymentPrice,
+                    currentMeasure: currentUnemploymentRate,
                     dailyChange: dailyUnemploymentPercentageChange.toFixed(2),
 
                     inaugurationPercentageChange: inaugurationUnemploymentPercentageChange.toFixed(2),

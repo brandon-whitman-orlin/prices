@@ -165,108 +165,71 @@ app.get('/api/egg', async (req, res) => {
 // Route to fetch unemployment price data
 app.get('/api/unemployment', async (req, res) => {
     try {
-        // Define the request payload
-        const unemploymentRequestData = {
-            seriesid: ['LNS14000000'], // Example series IDs
-            startyear: '2024',
-            endyear: '2050',
-        };
+        const unemploymentResponse = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+            params: {
+                series_id: 'UNRATE',
+                api_key: fredApiKey,
+                file_type: 'json',
+                limit: 5, // Limit to 5 results
+                sort_order: 'desc' // Sort in descending order
+            }
+        });
+        const unemploymentData = unemploymentResponse.data.observations;
+        console.log("Unemployment Data: ", unemploymentData);
 
-        // Make the POST request to the API
-        const unemploymentResponse = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
+        const mostRecentUnemploymentMeasure = formatDate(unemploymentData[0]["date"]);
+        console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
+
+        const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
+        console.log("The current rate is: ", currentUnemploymentRate);
+
+        const lastUnemploymentMeasure = formatDate(unemploymentData[1]["date"]);
+        console.log("The last measure was on: ", lastUnemploymentMeasure);
+
+        const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
+        console.log("The last rate was: ", lastUnemploymentRate);
+
+        const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
+        console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
+
+        const unemploymentResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
+            params: {
+                series_id: 'UNRATE',
+                api_key: fredApiKey,
+                file_type: 'json',
+                limit: 5, // Limit to 5 results
+                sort_order: 'asc', // Sort in ascending order
+                observation_start: customUnemploymentInaugurationDate // Start from this date
+            }
         });
 
-        console.log("Unemployment Response:", unemploymentResponse);
+        const unemploymentData2 = unemploymentResponse2.data.observations;
+        console.log("Unemployment Data 2: ", unemploymentData2);
 
+        const inaugurationUnemploymentDate = formatDate(unemploymentData2[0]["date"]);
+        console.log("The measure at inauguration was on: ", inaugurationUnemploymentDate);
 
-        const unemploymentResultsSeries = unemploymentResponse.data.Results.series
+        const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
+        console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
 
-        // const unemploymentData = unemploymentResultsSeries[0].data;
-        // console.log("Unemployment Data:", unemploymentData);
-
-        // const mostRecentUnemploymentYear = unemploymentData[0]["year"];
-        // const mostRecentUnemploymentPeriod = unemploymentData[0]["period"];
-
-        // // Extract the month number from the period (e.g., "M10" => 10)
-        // const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
-
-        // // Format the date as "MM-01-YYYY"
-        // const mostRecentUnemploymentMeasure = `${String(monthNumber).padStart(2, '0')}-01-${mostRecentUnemploymentYear}`;
-
-        // console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
-
-        // const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
-        // console.log("The current rate is: ", currentUnemploymentRate);
-
-        // const lastUnemploymentYear = unemploymentData[1]["year"];
-        // const lastUnemploymentPeriod = unemploymentData[1]["period"];
-
-        // // Extract the month number from the period (e.g., "M10" => 10)
-        // const lastmonthNumber = parseInt(lastUnemploymentPeriod.substring(1));
-
-        // // Format the date as "MM-01-YYYY"
-        // const lastUnemploymentMeasure = `${String(lastmonthNumber).padStart(2, '0')}-01-${lastUnemploymentYear}`;
-
-        // console.log("The last measure was on: ", lastUnemploymentMeasure);
-
-        // const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
-        // console.log("The last rate was: ", lastUnemploymentRate);
-
-        // const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
-        // console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
-
-        // const unemploymentRequestData2 = {
-        //     seriesid: ['LNS14000000'], // Example series IDs
-        //     startyear: '2024',
-        //     endyear: '2025',
-        // };
-
-        // // Make the POST request to the API
-        // const unemploymentResponse2 = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData2, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // });
-
-        // const unemploymentResultsSeries2 = unemploymentResponse2.data.Results.series
-
-        // const unemploymentData2 = unemploymentResultsSeries2[0].data;
-        // // console.log("UnemploymentData2: ", unemploymentData2);
-
-        // const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
-        // const inaugurationUnemploymentPeriod = unemploymentData2[0]["period"];
-
-        // // Extract the month number from the period (e.g., "M10" => 10)
-        // const monthNumber2 = parseInt(inaugurationUnemploymentPeriod.substring(1));
-
-        // // Format the date as "MM-01-YYYY"
-        // const inaugurationUnemploymentMeasure = `${String(monthNumber2).padStart(2, '0')}-01-${inaugurationUnemploymentYear}`;
-        // console.log("The measure at inauguration was on: ", inaugurationUnemploymentMeasure);
-
-        // const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
-        // console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
-
-        // const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
-        // console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
+        const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
+        console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
 
         // console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
-            // currentEggPrice,
-            // mostRecentEggMeasure,
+            currentUnemploymentRate,
+            mostRecentUnemploymentMeasure,
 
-            // lastEggPrice,
-            // lastEggMeasure,
+            lastUnemploymentRate,
+            lastUnemploymentMeasure,
 
-            // dailyEggPercentageChange,
+            dailyUnemploymentPercentageChange,
 
-            // inaugurationEggDate,
-            // inaugurationEggPrice,
-            // inaugurationEggPercentageChange,
+            inaugurationUnemploymentDate,
+            inaugurationUnemploymentRate,
+            inaugurationUnemploymentPercentageChange,
         });
     } catch (error) {
         console.error('Error fetching Unemployment data:', error);
