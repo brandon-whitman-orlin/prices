@@ -246,7 +246,7 @@ app.get('/api/unemployment', async (req, res) => {
 
         const unemploymentData2 = unemploymentResultsSeries2[0].data;
 
-        console.log("UnemploymentData2: ", unemploymentData2);
+        // console.log("UnemploymentData2: ", unemploymentData2);
 
         const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
         const inaugurationUnemploymentPeriod = unemploymentData2[0]["period"];
@@ -259,11 +259,11 @@ app.get('/api/unemployment', async (req, res) => {
 
         console.log("The measure at inauguration was on: ", inaugurationUnemploymentMeasure);
 
-        // const inaugurationEggPrice = parseFloat(eggData2[0]["value"]);
-        // console.log("The price at inauguration was: ", inaugurationEggPrice);
+        const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
+        console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
 
-        // const inaugurationEggPercentageChange = ((currentEggPrice - inaugurationEggPrice) / inaugurationEggPrice) * 100;
-        // console.log("Giving us a percentage change since inauguration of: ", inaugurationEggPercentageChange);
+        const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
+        console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
 
         // console.log("-------------------------");
 
