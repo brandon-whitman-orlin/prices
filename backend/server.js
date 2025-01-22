@@ -180,54 +180,40 @@ app.get('/api/unemployment', async (req, res) => {
         });
 
         const unemploymentResultsSeries = unemploymentResponse.data.Results.series
-        // console.log("Unemployment Response Results Series: ", unemploymentResultsSeries);
-
-        // unemploymentResultsSeries.forEach(series => {
-        //     console.log(`Series ID: ${series.seriesID}`);
-
-        //     // Access the data array within each series
-        //     series.data.forEach(item => {
-        //         console.log({
-        //             year: item.year,
-        //             period: item.period,
-        //             value: item.value,
-        //             footnotes: item.footnotes.map(fn => fn?.text || '').join(', '), // Concatenate footnotes if present
-        //         });
-        //     });
-        // });
 
         const unemploymentData = unemploymentResultsSeries[0].data;
+        console.log("Unemployment Data:", unemploymentData);
 
-        const mostRecentUnemploymentYear = unemploymentData[0]["year"];
-        const mostRecentUnemploymentPeriod = unemploymentData[0]["period"];
+        // const mostRecentUnemploymentYear = unemploymentData[0]["year"];
+        // const mostRecentUnemploymentPeriod = unemploymentData[0]["period"];
 
-        // Extract the month number from the period (e.g., "M10" => 10)
-        const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
+        // // Extract the month number from the period (e.g., "M10" => 10)
+        // const monthNumber = parseInt(mostRecentUnemploymentPeriod.substring(1));
 
-        // Format the date as "MM-01-YYYY"
-        const mostRecentUnemploymentMeasure = `${String(monthNumber).padStart(2, '0')}-01-${mostRecentUnemploymentYear}`;
+        // // Format the date as "MM-01-YYYY"
+        // const mostRecentUnemploymentMeasure = `${String(monthNumber).padStart(2, '0')}-01-${mostRecentUnemploymentYear}`;
 
-        console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
+        // console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
 
-        const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
-        console.log("The current rate is: ", currentUnemploymentRate);
+        // const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
+        // console.log("The current rate is: ", currentUnemploymentRate);
 
-        const lastUnemploymentYear = unemploymentData[1]["year"];
-        const lastUnemploymentPeriod = unemploymentData[1]["period"];
+        // const lastUnemploymentYear = unemploymentData[1]["year"];
+        // const lastUnemploymentPeriod = unemploymentData[1]["period"];
 
-        // Extract the month number from the period (e.g., "M10" => 10)
-        const lastmonthNumber = parseInt(lastUnemploymentPeriod.substring(1));
+        // // Extract the month number from the period (e.g., "M10" => 10)
+        // const lastmonthNumber = parseInt(lastUnemploymentPeriod.substring(1));
 
-        // Format the date as "MM-01-YYYY"
-        const lastUnemploymentMeasure = `${String(lastmonthNumber).padStart(2, '0')}-01-${lastUnemploymentYear}`;
+        // // Format the date as "MM-01-YYYY"
+        // const lastUnemploymentMeasure = `${String(lastmonthNumber).padStart(2, '0')}-01-${lastUnemploymentYear}`;
 
-        console.log("The last measure was on: ", lastUnemploymentMeasure);
+        // console.log("The last measure was on: ", lastUnemploymentMeasure);
 
-        const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
-        console.log("The last rate was: ", lastUnemploymentRate);
+        // const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
+        // console.log("The last rate was: ", lastUnemploymentRate);
 
-        const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
-        console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
+        // const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
+        // console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
 
         // const unemploymentRequestData2 = {
         //     seriesid: ['LNS14000000'], // Example series IDs
@@ -245,7 +231,6 @@ app.get('/api/unemployment', async (req, res) => {
         // const unemploymentResultsSeries2 = unemploymentResponse2.data.Results.series
 
         // const unemploymentData2 = unemploymentResultsSeries2[0].data;
-
         // // console.log("UnemploymentData2: ", unemploymentData2);
 
         // const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
