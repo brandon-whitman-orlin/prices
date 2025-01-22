@@ -91,7 +91,7 @@ function Home() {
                 const { currentUnemploymentRate, mostRecentUnemploymentMeasure, lastUnemploymentMeasure, dailyUnemploymentPercentageChange, inaugurationUnemploymentDate, inaugurationUnemploymentPercentageChange, } = response.data;
 
                 // Combine hardcoded and dynamic values
-                const gasData = {
+                const unemploymentData = {
                     title: "Unemployment",
                     desire: "negative",
                     inauguration: inaugurationUnemploymentDate,
