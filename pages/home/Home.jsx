@@ -99,8 +99,8 @@ function Home() {
                     inauguration: inaugurationUnemploymentDate,
                     description: "The unemployment rate is the percentage of the civilian labor force—comprising individuals aged 16 and older, residing in the 50 states or D.C., and not institutionalized or on active military duty—who are unemployed.",
                     sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
-                    sign: "$",
-                    units: "per Gallon",
+                    sign: "%",
+                    units: "",
                     frequency: "month",
 
                     lastUpdated: mostRecentUnemploymentMeasure,
