@@ -16,8 +16,8 @@ const fredApiKey = process.env.FRED_API_KEY;
 app.use(cors()); // Enable CORS to allow requests from your frontend
 
 // Custom date for filtering data
-const customGasInaugurationDate = "2025-01-13"; // When gas was measured closest to but before the inauguration date
-const customEggInaugurationDate = "2024-12-01"; // When eggs were measured closest to but before the inauguration date
+const customEIAInaugurationDate = "2025-01-13"; // When gas was measured closest to but before the inauguration date
+const customFREDInaugurationDate = "2024-12-01"; // When eggs were measured closest to but before the inauguration date
 
 // Route to fetch gas price data
 app.get('/api/gas', async (req, res) => {
@@ -50,7 +50,7 @@ app.get('/api/gas', async (req, res) => {
         const dailyGasPercentageChange = ((currentGasPrice - lastGasPrice) / lastGasPrice) * 100;
         // console.log("Giving us a daily percentage change of: ", dailyGasPercentageChange);
 
-        const gasResponse2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customGasInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
+        const gasResponse2 = await axios.get(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${eiaApiKey}&frequency=weekly&data[0]=value&facets[duoarea][]=NUS&facets[product][]=EPMR&start=${customEIAInaugurationDate}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000`, {
         });
 
         const gasData2 = gasResponse2.data["response"]["data"];
@@ -124,7 +124,7 @@ app.get('/api/egg', async (req, res) => {
                 file_type: 'json',
                 limit: 5, // Limit to 5 results
                 sort_order: 'asc', // Sort in ascending order
-                observation_start: customEggInaugurationDate // Start from this date
+                observation_start: customFREDInaugurationDate // Start from this date
             }
         });
 
@@ -199,7 +199,7 @@ app.get('/api/unemployment', async (req, res) => {
                 file_type: 'json',
                 limit: 5, // Limit to 5 results
                 sort_order: 'asc', // Sort in ascending order
-                observation_start: customUnemploymentInaugurationDate // Start from this date
+                observation_start: customFREDInaugurationDate // Start from this date
             }
         });
 
