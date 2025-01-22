@@ -248,12 +248,16 @@ app.get('/api/unemployment', async (req, res) => {
 
         console.log("UnemploymentData2: ", unemploymentData2);
 
+        const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
+        const inaugurationUnemploymentPeriod = unemploymentData2[0]["period"];
 
-        // const eggData2 = eggResponse2.data.observations;
-        // console.log("Egg Data 2: ", eggData2);
+        // Extract the month number from the period (e.g., "M10" => 10)
+        const monthNumber2 = parseInt(inaugurationUnemploymentPeriod.substring(1));
 
-        // const inaugurationEggDate = formatDate(eggData2[0]["date"]);
-        // console.log("The measure at inauguration was on: ", inaugurationEggDate);
+        // Format the date as "MM-01-YYYY"
+        const inaugurationUnemploymentMeasure = `${String(monthNumber2).padStart(2, '0')}-01-${inaugurationUnemploymentYear}`;
+
+        console.log("The measure at inauguration was on: ", inaugurationUnemploymentMeasure);
 
         // const inaugurationEggPrice = parseFloat(eggData2[0]["value"]);
         // console.log("The price at inauguration was: ", inaugurationEggPrice);
