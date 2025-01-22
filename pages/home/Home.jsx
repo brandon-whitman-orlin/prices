@@ -33,6 +33,7 @@ function Home() {
                     inauguration: inaugurationGasDate,
                     description: "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
                     sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
+                    sign: "$",
                     units: "per Gallon",
                     frequency: "week",
 
@@ -65,6 +66,7 @@ function Home() {
                     inauguration: inaugurationEggDate,
                     description: "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
                     sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
+                    sign: "$",
                     units: "a Dozen",
                     frequency: "month",
 
@@ -97,6 +99,7 @@ function Home() {
                     inauguration: inaugurationUnemploymentDate,
                     description: "The unemployment rate is the percentage of the civilian labor force—comprising individuals aged 16 and older, residing in the 50 states or D.C., and not institutionalized or on active military duty—who are unemployed.",
                     sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
+                    sign: "$",
                     units: "per Gallon",
                     frequency: "month",
 

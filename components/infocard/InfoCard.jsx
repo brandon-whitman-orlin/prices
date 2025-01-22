@@ -7,22 +7,41 @@ import { ReactComponent as UpGraph } from '../../assets/icons/upgraph.svg';
 import { ReactComponent as DownGraph } from '../../assets/icons/downgraph.svg';
 
 const InfoCard = ({ info }) => {
-    const { desire, inaugurationPercentageChange, title, currentMeasure, units, dailyChange, frequency, lastMeasure, inauguration, description, lastUpdated, sourceUrl } = info;
+    const {
+        desire,
+        inaugurationPercentageChange,
+        title,
+        currentMeasure,
+        sign,
+        units = "", // Default to an empty string if units are not provided
+        dailyChange,
+        frequency,
+        lastMeasure,
+        inauguration,
+        description,
+        lastUpdated,
+        sourceUrl,
+    } = info;
 
     const backgroundColor =
         (desire === 'positive' && inaugurationPercentageChange > 0) || (desire === 'negative' && inaugurationPercentageChange < 0)
             ? `var(--negative)`
             : `var(--positive)`;
 
+    // Format the current measure display based on sign and units
+    const formattedMeasure =
+        sign === '$'
+            ? `${sign}${currentMeasure}`
+            : `${currentMeasure}${sign || ""}`;
+
     return (
-        <div
-            className="info-card"
-            style={{ backgroundColor }}
-        >
+        <div className="info-card" style={{ backgroundColor }}>
             {/* Header with Title and Amount */}
             <div className="info-card-header">
                 <h2 className="title">{title}</h2>
-                <h3 className="amount">${currentMeasure} {units}</h3>
+                <h3 className="amount">
+                    {formattedMeasure} {units}
+                </h3>
             </div>
 
             <h3 className="change">
@@ -51,15 +70,10 @@ const InfoCard = ({ info }) => {
                 {` since inauguration (${inauguration}).`}
             </h3>
 
-
-            <p className="description">
-                {description}
-            </p>
+            <p className="description">{description}</p>
 
             <div className="controls">
-                <small className="last-updated">
-                    {`Last Updated: ${lastUpdated}`}
-                </small>
+                <small className="last-updated">{`Last Updated: ${lastUpdated}`}</small>
                 <IconLink type="source" href={sourceUrl} />
             </div>
         </div>

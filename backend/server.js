@@ -178,19 +178,19 @@ app.get('/api/unemployment', async (req, res) => {
         // console.log("Unemployment Data: ", unemploymentData);
 
         const mostRecentUnemploymentMeasure = formatDate(unemploymentData[0]["date"]);
-        console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
+        // console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
 
         const currentUnemploymentRate = parseFloat(unemploymentData[0]["value"]);
-        console.log("The current rate is: ", currentUnemploymentRate);
+        // console.log("The current rate is: ", currentUnemploymentRate);
 
         const lastUnemploymentMeasure = formatDate(unemploymentData[1]["date"]);
-        console.log("The last measure was on: ", lastUnemploymentMeasure);
+        // console.log("The last measure was on: ", lastUnemploymentMeasure);
 
         const lastUnemploymentRate = parseFloat(unemploymentData[1]["value"]);
-        console.log("The last rate was: ", lastUnemploymentRate);
+        // console.log("The last rate was: ", lastUnemploymentRate);
 
         const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
-        console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
+        // console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
 
         const unemploymentResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
             params: {
@@ -207,13 +207,13 @@ app.get('/api/unemployment', async (req, res) => {
         // console.log("Unemployment Data 2: ", unemploymentData2);
 
         const inaugurationUnemploymentDate = formatDate(unemploymentData2[0]["date"]);
-        console.log("The measure at inauguration was on: ", inaugurationUnemploymentDate);
+        // console.log("The measure at inauguration was on: ", inaugurationUnemploymentDate);
 
         const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
-        console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
+        // console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
 
         const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
-        console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
+        // console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
 
         // console.log("-------------------------");
 
