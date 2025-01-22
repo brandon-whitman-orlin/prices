@@ -179,10 +179,13 @@ app.get('/api/unemployment', async (req, res) => {
             },
         });
 
+        console.log("Unemployment Response:", unemploymentResponse);
+
+
         const unemploymentResultsSeries = unemploymentResponse.data.Results.series
 
-        const unemploymentData = unemploymentResultsSeries[0].data;
-        console.log("Unemployment Data:", unemploymentData);
+        // const unemploymentData = unemploymentResultsSeries[0].data;
+        // console.log("Unemployment Data:", unemploymentData);
 
         // const mostRecentUnemploymentYear = unemploymentData[0]["year"];
         // const mostRecentUnemploymentPeriod = unemploymentData[0]["period"];
