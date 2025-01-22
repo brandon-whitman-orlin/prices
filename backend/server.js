@@ -229,16 +229,25 @@ app.get('/api/unemployment', async (req, res) => {
         const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
         console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
 
-        // const eggResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
-        //     params: {
-        //         series_id: 'APU0000708111',
-        //         api_key: fredApiKey,
-        //         file_type: 'json',
-        //         limit: 5, // Limit to 5 results
-        //         sort_order: 'asc', // Sort in ascending order
-        //         observation_start: customEggInaugurationDate // Start from this date
-        //     }
-        // });
+        const unemploymentRequestData2 = {
+            seriesid: ['LNS14000000'], // Example series IDs
+            startyear: '2024',
+            endyear: '2050',
+        };
+
+        // Make the POST request to the API
+        const unemploymentResponse2 = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData2, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const unemploymentResultsSeries2 = unemploymentResponse2.data.Results.series
+
+        const unemploymentData2 = unemploymentResultsSeries2[0].data;
+
+        console.log("UnemploymentData2: ", unemploymentData2);
+
 
         // const eggData2 = eggResponse2.data.observations;
         // console.log("Egg Data 2: ", eggData2);
