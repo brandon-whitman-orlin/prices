@@ -229,41 +229,40 @@ app.get('/api/unemployment', async (req, res) => {
         const dailyUnemploymentPercentageChange = ((currentUnemploymentRate - lastUnemploymentRate) / lastUnemploymentRate) * 100;
         console.log("Giving us a daily percentage change of: ", dailyUnemploymentPercentageChange);
 
-        const unemploymentRequestData2 = {
-            seriesid: ['LNS14000000'], // Example series IDs
-            startyear: '2024',
-            endyear: '2025',
-        };
+        // const unemploymentRequestData2 = {
+        //     seriesid: ['LNS14000000'], // Example series IDs
+        //     startyear: '2024',
+        //     endyear: '2025',
+        // };
 
-        // Make the POST request to the API
-        const unemploymentResponse2 = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData2, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        // // Make the POST request to the API
+        // const unemploymentResponse2 = await axios.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', unemploymentRequestData2, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
 
-        const unemploymentResultsSeries2 = unemploymentResponse2.data.Results.series
+        // const unemploymentResultsSeries2 = unemploymentResponse2.data.Results.series
 
-        const unemploymentData2 = unemploymentResultsSeries2[0].data;
+        // const unemploymentData2 = unemploymentResultsSeries2[0].data;
 
-        // console.log("UnemploymentData2: ", unemploymentData2);
+        // // console.log("UnemploymentData2: ", unemploymentData2);
 
-        const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
-        const inaugurationUnemploymentPeriod = unemploymentData2[0]["period"];
+        // const inaugurationUnemploymentYear = unemploymentData2[0]["year"];
+        // const inaugurationUnemploymentPeriod = unemploymentData2[0]["period"];
 
-        // Extract the month number from the period (e.g., "M10" => 10)
-        const monthNumber2 = parseInt(inaugurationUnemploymentPeriod.substring(1));
+        // // Extract the month number from the period (e.g., "M10" => 10)
+        // const monthNumber2 = parseInt(inaugurationUnemploymentPeriod.substring(1));
 
-        // Format the date as "MM-01-YYYY"
-        const inaugurationUnemploymentMeasure = `${String(monthNumber2).padStart(2, '0')}-01-${inaugurationUnemploymentYear}`;
+        // // Format the date as "MM-01-YYYY"
+        // const inaugurationUnemploymentMeasure = `${String(monthNumber2).padStart(2, '0')}-01-${inaugurationUnemploymentYear}`;
+        // console.log("The measure at inauguration was on: ", inaugurationUnemploymentMeasure);
 
-        console.log("The measure at inauguration was on: ", inaugurationUnemploymentMeasure);
+        // const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
+        // console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
 
-        const inaugurationUnemploymentRate = parseFloat(unemploymentData2[0]["value"]);
-        console.log("The rate at inauguration was: ", inaugurationUnemploymentRate);
-
-        const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
-        console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
+        // const inaugurationUnemploymentPercentageChange = ((currentUnemploymentRate - inaugurationUnemploymentRate) / inaugurationUnemploymentRate) * 100;
+        // console.log("Giving us a percentage change since inauguration of: ", inaugurationUnemploymentPercentageChange);
 
         // console.log("-------------------------");
 
