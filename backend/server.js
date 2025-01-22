@@ -175,7 +175,7 @@ app.get('/api/unemployment', async (req, res) => {
             }
         });
         const unemploymentData = unemploymentResponse.data.observations;
-        console.log("Unemployment Data: ", unemploymentData);
+        // console.log("Unemployment Data: ", unemploymentData);
 
         const mostRecentUnemploymentMeasure = formatDate(unemploymentData[0]["date"]);
         console.log("Most recently measured on: ", mostRecentUnemploymentMeasure);
@@ -204,7 +204,7 @@ app.get('/api/unemployment', async (req, res) => {
         });
 
         const unemploymentData2 = unemploymentResponse2.data.observations;
-        console.log("Unemployment Data 2: ", unemploymentData2);
+        // console.log("Unemployment Data 2: ", unemploymentData2);
 
         const inaugurationUnemploymentDate = formatDate(unemploymentData2[0]["date"]);
         console.log("The measure at inauguration was on: ", inaugurationUnemploymentDate);
