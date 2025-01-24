@@ -10,14 +10,6 @@
     max-width: 45rem;
 }
 
-.title {
-    font-size: var(--h2);
-}
-
-.amount {
-    font-size: var(--h3);
-}
-
 .info-card-header {
     display: flex;
     justify-content: space-between;
