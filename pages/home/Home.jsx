@@ -125,9 +125,9 @@ function Home() {
         fetchUnemploymentData();
     }, []);
 
-    // if (!gasData || !eggData || !unemploymentData) {
-    //     return <div>Loading...</div>;
-    // }
+    if (!gasData || !eggData || !unemploymentData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="home">
