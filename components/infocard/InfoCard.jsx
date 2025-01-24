@@ -38,10 +38,10 @@ const InfoCard = ({ info }) => {
         <div className="info-card" style={{ backgroundColor }}>
             {/* Header with Title and Amount */}
             <div className="info-card-header">
-                <h2 className="title">{title}</h2>
-                <h3 className="amount">
+                <h3 className="title">{title}</h3>
+                <h4 className="amount">
                     {formattedMeasure} {units}
-                </h3>
+                </h4>
             </div>
 
             <h3 className="change">
