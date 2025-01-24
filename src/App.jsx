@@ -9,7 +9,7 @@ import Home from '../pages/home/Home';
 function App() {
   return (
     <Router>
-      <div className="app-container" style={{ height: '100%', width: '100%' }}>
+      <div className="app-container" style={{ minHeight: '100%', width: '100%' }}>
         <Routes>
           <Route path='/' element={<Home />} />
           {/* <Route path='/pricing' element={<Pricing />} /> */}

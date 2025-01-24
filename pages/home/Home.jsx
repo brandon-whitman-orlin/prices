@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
+
+import Navbar from '../../components/navbar/Navbar';
 import InfoCard from '../../components/infocard/InfoCard';
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -18,7 +20,7 @@ function Home() {
         const fetchGasData = async () => {
             try {
 
-                const response111 = await axios.get(`${backendURL}/api/test`);
+                // const response111 = await axios.get(`${backendURL}/api/test`);
                 // console.log(response111.data);
 
                 const response = await axios.get(`${backendURL}/api/gas`);
@@ -97,7 +99,7 @@ function Home() {
                     title: "Unemployment",
                     desire: "negative",
                     inauguration: inaugurationUnemploymentDate,
-                    description: "The unemployment rate is the percentage of the civilian labor force—comprising individuals aged 16 and older, residing in the 50 states or D.C., and not institutionalized or on active military duty—who are unemployed.",
+                    description: "The unemployment rate is the percentage of the civilian labor force (16+), residing in the 50 states or D.C., who are unemployed.",
                     sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
                     sign: "%",
                     units: "",
@@ -123,16 +125,30 @@ function Home() {
         fetchUnemploymentData();
     }, []);
 
-    if (!gasData || !eggData || !unemploymentData) {
-        return <div>Loading...</div>;
-    }
+    // if (!gasData || !eggData || !unemploymentData) {
+    //     return <div>Loading...</div>;
+    // }
 
     return (
-        <section className="home">
-            <InfoCard info={gasData} />
-            <InfoCard info={eggData} />
-            <InfoCard info={unemploymentData} />
-        </section>
+        <div className="home">
+            <header className="header">
+                <Navbar
+                    links={[
+                        <a href="/" className="active">Home</a>,
+                        <a href="/about" className="custom-class">About</a>,
+                        <a href="/contact">Contact</a>
+                    ]} name="My Website" />
+            </header>
+            <main className="main">
+                <h1>HOW IS THE PRESIDENT DOING?</h1>
+                <h3>The president of the United States of America is supposed to care for the country. Let's see how the current president is doing so far:</h3>
+
+                <InfoCard info={gasData} />
+                <InfoCard info={eggData} />
+                <InfoCard info={unemploymentData} />
+            </main>
+            <footer className="footer"></footer>
+        </div>
     );
 }
 

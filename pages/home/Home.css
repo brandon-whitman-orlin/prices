@@ -1,18 +1,35 @@
 .home {
     width: 100vw;
-    height: 100svh;
-    padding: 2rem 10rem;
+    height: fit-content;
     display: grid;
-    overflow-y: scroll;
-    gap: 2rem;
     background-color: var(--background);
     color: var(--text);
 
-    justify-content: center;
-    align-items: center;
+    place-items: center;
+    align-content: space-between;
+
+    position: relative;
 }
 
-@media screen and (max-width: 900px) {
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    display: grid;
+    place-items: center;
+}
+
+.main {
+    width: 100%;
+    padding: min(5%, 10rem) min(10%, 20rem);
+}
+
+.footer {
+    background-color: green;
+    width: 100%;
+}
+
+/* @media screen and (max-width: 900px) {
     .home {
         padding: 2rem;
     }
@@ -48,4 +65,4 @@
         --font-scale: 0.5 !important;
         --icon-size: 1rem;
     }
-}
+} */
