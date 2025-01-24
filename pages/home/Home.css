@@ -23,6 +23,14 @@
 .main {
     width: 100%;
     padding: min(5%, 10rem) min(10%, 20rem);
+    position: relative;
+}
+
+.main .infoCard-display {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
 }
 
 .footer {
