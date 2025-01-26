@@ -97,3 +97,14 @@ li.nav-item:has(.active)::after {
 .navbar .nav-list .nav-item .active::after {
     right: -0.5rem;
 }
+
+@media screen and (max-width: 692px) {
+    .navbar {
+        gap: 1rem;
+    }
+
+    .navbar>a {
+        width: 100%;
+        text-align: center;
+    }
+}

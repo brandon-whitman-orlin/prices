@@ -143,11 +143,9 @@ function Home() {
                 <h1>HOW IS THE PRESIDENT DOING?</h1>
                 <h3>The president of the United States of America is supposed to care for the country. Let's see how the current president is doing so far:</h3>
 
-                <div className="infoCard-display">
-                    <InfoCard info={gasData} />
-                    <InfoCard info={eggData} />
-                    <InfoCard info={unemploymentData} />
-                </div>
+                <InfoCard info={gasData} />
+                <InfoCard info={eggData} />
+                <InfoCard info={unemploymentData} />
             </main>
             <footer className="footer"></footer>
         </div>
