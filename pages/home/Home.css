@@ -55,6 +55,18 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .main .infoCard-display {
+        padding-inline: 0rem;
+    }
+
+    .main .infoCard-display .infoCard-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0rem;
+    }
+}
+
 /* @media screen and (max-width: 800px) {
     :root {
         --font-scale: 1 !important;
@@ -66,7 +78,7 @@
         padding: 1rem;
     }
 
-    .home .info-card .controls small {
+    .home .infoCard .controls small {
         font-size: var(--p);
     }
 

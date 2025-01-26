@@ -35,9 +35,9 @@ const InfoCard = ({ info }) => {
             : `${currentMeasure}${sign || ""}`;
 
     return (
-        <div className="info-card" style={{ backgroundColor }}>
+        <div className="infoCard" style={{ backgroundColor }}>
             {/* Header with Title and Amount */}
-            <div className="info-card-header">
+            <div className="infoCard-header">
                 <h3 className="title">{title}</h3>
                 <h4 className="amount">
                     {formattedMeasure} {units}
