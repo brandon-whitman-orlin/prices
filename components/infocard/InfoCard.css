@@ -2,13 +2,15 @@
     padding: var(--padding);
     border-radius: var(--border-radius);
     color: var(--text);
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 100%;
     gap: 0.5rem;
     width: fit-content;
     max-width: 45rem;
-    min-width: 0;
+    width: 100%;
 }
 
 .info-card-header {

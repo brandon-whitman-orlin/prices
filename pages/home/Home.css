@@ -24,8 +24,10 @@
     width: 100%;
     padding: min(5%, 10rem) min(10%, 20rem);
     position: relative;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -47,13 +49,13 @@
     width: 100%;
 }
 
-/* @media screen and (max-width: 900px) {
-    .home {
-        padding: 2rem;
+@media screen and (max-width: 900px) {
+    .main .infoCard-display {
+        padding-inline: 0rem;
     }
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
     :root {
         --font-scale: 1 !important;
     }
