@@ -24,6 +24,8 @@
     width: 100%;
     padding: min(5%, 10rem) min(10%, 20rem);
     position: relative;
+    display: grid;
+    place-items: center;
 }
 
 .footer {

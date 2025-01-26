@@ -107,4 +107,8 @@ li.nav-item:has(.active)::after {
         width: 100%;
         text-align: center;
     }
+
+    .navbar .nav-list {
+        width: 100%;
+    }
 }
