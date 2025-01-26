@@ -20,6 +20,13 @@
     gap: 2rem;
 }
 
+.infoCard-divider {
+    display: none;
+    background-color: var(--text);
+    height: 0.25rem;
+    width: 100%;
+}
+
 .change {
     font-size: var(--p);
     min-height: var(--icon-size);

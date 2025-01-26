@@ -44,6 +44,8 @@ const InfoCard = ({ info }) => {
                 </h4>
             </div>
 
+            <div className='infoCard-divider'></div>
+
             <h3 className="change">
                 {dailyChange > 0 ? (
                     <>
