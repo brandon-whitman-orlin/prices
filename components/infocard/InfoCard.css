@@ -21,10 +21,13 @@
 }
 
 .infoCard-divider {
-    display: none;
+    display: block;
     background-color: var(--text);
     height: 0.25rem;
     width: 100%;
+    opacity: 0.6;
+    border-radius: var(--border-radius);
+    margin-block: 0.5rem;
 }
 
 .change {
@@ -64,4 +67,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.controls .icon-link.source {
+    padding-inline: 0;
 }

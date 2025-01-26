@@ -70,10 +70,6 @@
         width: 100%;
         text-align: center;
     }
-
-    .main .infoCard-display .infoCard-divider {
-        display: block;
-    }
 }
 
 /* @media screen and (max-width: 800px) {
