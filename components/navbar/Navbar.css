@@ -43,7 +43,7 @@ li.nav-item:has(.active)::after {
     width: calc(100% + 1rem);
     left: -0.5rem;
     position: absolute;
-    bottom: 8px;
+    bottom: 9.5px;
 }
 
 .navbar .nav-list .nav-item .nav-link::before,

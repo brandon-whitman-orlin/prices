@@ -50,12 +50,14 @@
     align-items: center;
     margin-right: 0.5ch;
     vertical-align: baseline;
+    height: 2rem;
+    width: 2rem;
 }
 
 .controls {
     display: flex;
     justify-content: end;
-    gap: 0.5rem;
+    gap: 1rem;
     min-height: var(--icon-size);
 }
 
