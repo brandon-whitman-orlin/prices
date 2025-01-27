@@ -14,3 +14,10 @@
     opacity: 1;
     transform: scale(1.05);
 }
+
+.controls .icon:focus-visible {
+    opacity: 1;
+    transform: scale(1.05);
+    --highlightColor: var(--negative);
+    --highlightInverse: var(--negative);
+}
