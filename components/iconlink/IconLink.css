@@ -1,4 +1,4 @@
-.controls .icon {
+.controls .icon-link {
     background: none;
     border: none;
     cursor: pointer;
@@ -10,12 +10,12 @@
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.controls .icon:hover {
+.controls .icon-link:hover {
     opacity: 1;
     transform: scale(1.05);
 }
 
-.controls .icon:focus-visible {
+.controls .icon-link:focus-visible {
     opacity: 1;
     transform: scale(1.05);
     --highlightColor: var(--negative);
