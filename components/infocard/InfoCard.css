@@ -50,9 +50,6 @@
     align-items: center;
     margin-right: 0.5ch;
     vertical-align: baseline;
-    height: 2rem;
-    width: 2rem;
-    content: '';
 }
 
 .controls {
