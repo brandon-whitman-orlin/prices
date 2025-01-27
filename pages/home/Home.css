@@ -1,5 +1,5 @@
 .home {
-    width: 100vw;
+    width: fit-content;
     height: fit-content;
     display: grid;
     background-color: var(--background);
