@@ -104,19 +104,19 @@ app.get('/api/egg', async (req, res) => {
         // console.log("Egg Data: ", eggData);
 
         const mostRecentEggMeasure = formatDate(eggData[0]["date"]);
-        console.log("Most recently measured on: ", mostRecentEggMeasure);
+        // console.log("Most recently measured on: ", mostRecentEggMeasure);
 
         const currentEggPrice = parseFloat(eggData[0]["value"]);
-        console.log("The current price is: ", currentEggPrice);
+        // console.log("The current price is: ", currentEggPrice);
 
         const lastEggMeasure = formatDate(eggData[1]["date"]);
-        console.log("The last measure was on: ", lastEggMeasure);
+        // console.log("The last measure was on: ", lastEggMeasure);
 
         const lastEggPrice = parseFloat(eggData[1]["value"]);
-        console.log("The last price was: ", lastEggPrice);
+        // console.log("The last price was: ", lastEggPrice);
 
         const dailyEggPercentageChange = ((currentEggPrice - lastEggPrice) / lastEggPrice) * 100;
-        console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
+        // console.log("Giving us a daily percentage change of: ", dailyEggPercentageChange);
 
         const eggResponse2 = await axios.get('https://api.stlouisfed.org/fred/series/observations', {
             params: {
@@ -133,15 +133,15 @@ app.get('/api/egg', async (req, res) => {
         // console.log("Egg Data 2: ", eggData2);
 
         const inaugurationEggDate = formatDate(eggData2[0]["date"]);
-        console.log("The measure at inauguration was on: ", inaugurationEggDate);
+        // console.log("The measure at inauguration was on: ", inaugurationEggDate);
 
         const inaugurationEggPrice = parseFloat(eggData2[0]["value"]);
-        console.log("The price at inauguration was: ", inaugurationEggPrice);
+        // console.log("The price at inauguration was: ", inaugurationEggPrice);
 
         const inaugurationEggPercentageChange = ((currentEggPrice - inaugurationEggPrice) / inaugurationEggPrice) * 100;
-        console.log("Giving us a percentage change since inauguration of: ", inaugurationEggPercentageChange);
+        // console.log("Giving us a percentage change since inauguration of: ", inaugurationEggPercentageChange);
 
-        console.log("-------------------------");
+        // console.log("-------------------------");
 
         // Send the fetched data to the client
         res.json({
