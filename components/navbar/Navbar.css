@@ -82,6 +82,10 @@ li.nav-item:has(.active)::after {
     background-color: var(--background);
 }
 
+.navbar .nav-list .nav-item .active.nav-link {
+    z-index: 4;
+}
+
 .navbar .nav-list .nav-item .active.nav-link::before {
     left: calc(-1.5rem);
 }
