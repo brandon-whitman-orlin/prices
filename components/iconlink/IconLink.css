@@ -19,5 +19,9 @@
     opacity: 1;
     transform: scale(1.05);
     --highlightColor: var(--negative);
-    --highlightInverse: var(--negative);
+    --highlightInverse: var(--text);
+
+    outline: 0.5rem solid var(--highlightInverse);
+    outline-offset: -1px;
+    --customFill: var(--negative);
 }
