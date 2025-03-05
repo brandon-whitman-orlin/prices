@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "../pages/home/Home";
+import About from "../pages/about/About";
+import Contact from "../pages/contact/Contact";
 
-import './App.css';
-// import useFriendStore from './friends/friend-store';
+import "./App.css"; // Ensure global styles are imported
 
-import Home from '../pages/home/Home';
-
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="app-container" style={{ minHeight: '100%', width: '100%' }}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          {/* <Route path='/pricing' element={<Pricing />} /> */}
-        </Routes>
-      </div>
-    </Router>
+    <div className="app-container" style={{ minHeight: '100%', width: '100%' }}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </div>
   );
-}
+};
 
 export default App;

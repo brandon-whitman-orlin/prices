@@ -1,13 +1,20 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import svgr from "@svgr/rollup";
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import path from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
   server: {
-    host: '0.0.0.0', // Bind to all network interfaces, including your local IP
-    port: 5173,      // Default port (can be changed if needed)
+    historyApiFallback: true, // Ensures routing works correctly
   },
-  define: { 'process.env': process.env }
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'), // Aliasing @ to src
+    },
+  },
+  assetsInclude: ['**/*.fbx'], // Ensure .fbx files are treated as assets
+  define: {
+    'process.env': process.env, // Provide process.env globally
+  },
 });

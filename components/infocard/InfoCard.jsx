@@ -23,10 +23,15 @@ const InfoCard = ({ info }) => {
         sourceUrl,
     } = info;
 
-    const backgroundColor =
-        (desire === 'positive' && inaugurationPercentageChange > 0) || (desire === 'negative' && inaugurationPercentageChange < 0)
-            ? `var(--negative)`
-            : `var(--positive)`;
+    // Determine the class for the background color based on change
+    const cardClass =
+        (desire === 'positive' && inaugurationPercentageChange > 0) ||
+        (desire === 'negative' && inaugurationPercentageChange < 0)
+            ? 'positive'
+            : 'negative';
+
+    const upColor = desire === 'positive' && inaugurationPercentageChange > 0 ? `var(--positive)` : `var(--negative)`;
+    const downColor = desire === 'negative' && inaugurationPercentageChange > 0 ? `var(--positive)` : `var(--negative)`;
 
     // Format the current measure display based on sign and units
     const formattedMeasure =
@@ -35,7 +40,13 @@ const InfoCard = ({ info }) => {
             : `${currentMeasure}${sign || ""}`;
 
     return (
-        <div className="infoCard" style={{ backgroundColor }}>
+        <div
+            className={`infoCard ${cardClass}`}
+            style={{
+                '--upColor': upColor,
+                '--downColor': downColor
+            }}
+        >
             {/* Header with Title and Amount */}
             <div className="infoCard-header">
                 <h3 className="title">{title}</h3>
@@ -49,11 +60,11 @@ const InfoCard = ({ info }) => {
             <h3 className="change">
                 {dailyChange > 0 ? (
                     <>
-                        <UpGraph className="icon" /> Up {Math.abs(dailyChange)}%
+                        <UpGraph className="icon up-icon" /> Up {Math.abs(dailyChange)}%
                     </>
                 ) : (
                     <>
-                        <DownGraph className="icon" /> Down {Math.abs(dailyChange)}%
+                        <DownGraph className="icon down-icon" /> Down {Math.abs(dailyChange)}%
                     </>
                 )}
                 {` since last ${frequency} (${lastMeasure}).`}
@@ -62,11 +73,11 @@ const InfoCard = ({ info }) => {
             <h3 className="change">
                 {inaugurationPercentageChange > 0 ? (
                     <>
-                        <UpGraph className="icon" /> Up {Math.abs(inaugurationPercentageChange)}%
+                        <UpGraph className="icon up-icon" /> Up {Math.abs(inaugurationPercentageChange)}%
                     </>
                 ) : (
                     <>
-                        <DownGraph className="icon" /> Down {Math.abs(inaugurationPercentageChange)}%
+                        <DownGraph className="icon down-icon" /> Down {Math.abs(inaugurationPercentageChange)}%
                     </>
                 )}
                 {` since inauguration (${inauguration}).`}
@@ -83,8 +94,3 @@ const InfoCard = ({ info }) => {
 };
 
 export default InfoCard;
-
-const formatDate = (dateStr) => {
-    const [year, month, day] = dateStr.split("-");
-    return `${month}-${day}-${year}`;
-};

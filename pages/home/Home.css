@@ -9,6 +9,7 @@
     align-content: space-between;
 
     position: relative;
+    background-image: url('/assets/images/background.svg');
 }
 
 .header {
@@ -29,6 +30,23 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+}
+
+.main .hero-text {
+    font-size: calc(var(--extra-extra-extra-extra-large) + 3rem);
+}
+
+.main > h1, .main > h3 {
+    text-align: center;
+}
+
+.main .placeholder-notice {
+    font-style: italic;
+    text-transform: uppercase;
+    background-color: var(--text);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    color: var(--background);
 }
 
 .main .infoCard-display {

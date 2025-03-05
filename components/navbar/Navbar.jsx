@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './Navbar.css';
 
 const Navbar = ({ links, name = '' }) => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Handle scroll events
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 10) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     // Add the "nav-link" class to any <a> element that doesn't already have it
     const updatedLinks = links.map((link, index) => {
         const linkClass = link.props.className || '';
@@ -15,9 +35,9 @@ const Navbar = ({ links, name = '' }) => {
     });
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             {name && (
-                <a href="/">
+                <a href="/" className='site-name'>
                     <h2>{name}</h2>
                 </a>
             )}
