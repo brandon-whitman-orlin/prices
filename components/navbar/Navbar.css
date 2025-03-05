@@ -9,6 +9,30 @@
     background-color: transparent;
     transition: all 0.3s ease-in-out;
     outline: 2px solid transparent;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 755px) {
+    .navbar {
+        padding: 0.25rem;
+        gap: 0rem;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .navbar .site-name {
+        padding: 0;
+    }
+
+    .navbar .site-name h2 {
+        font-size: var(--extra-extra-large);
+    }
+
+    .navbar .nav-list .nav-item .nav-link.nav-link {
+        font-size: var(--medium);
+        padding: 0rem;
+    }
+    
 }
 
 .navbar .nav-list {
