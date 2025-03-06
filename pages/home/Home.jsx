@@ -223,12 +223,14 @@ function Home() {
         />
       </header>
       <main className="main">
-        <h1 className="hero-text">POLITICIANS LIE.</h1>
-        <h1 className="hero-text">WE DON'T.</h1>
-        <h3>Political promises aren't just words—they're strategic tools of manipulation. We're your weapon against political deceit.</h3>
-
-        {LOCAL_MODE ? <p className="placeholder-notice">This is placeholder data. Do not take any information displayed on this site as fact.</p> : null}
-
+        <div className="hero-text">
+          <div className="hero-h1">
+            <h1>POLITICIANS LIE.</h1>
+            <h1>WE DON'T.</h1>
+          </div>
+          <p>Political promises aren't just words—they're strategic tools of manipulation. We're your weapon against political deceit.</p>
+          {LOCAL_MODE ? <p className="placeholder-notice">This is placeholder data. Do not take any information displayed on this site as fact.</p> : null}
+        </div>
         <div className="infoCard-display">
           <InfoCard info={gasData} />
           <InfoCard info={eggData} />

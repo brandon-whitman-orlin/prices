@@ -48,10 +48,46 @@
 }
 
 .change {
-    font-size: var(--p);
+    font-size: var(--extra-small);
     min-height: var(--icon-size);
     display: flex;
     align-items: center;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+
+.infoCard.positive .change.positive {
+    background: rgba(0, 150, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 150, 0, 0.3);
+}
+
+.infoCard.positive .change.negative {
+    background-color: transparent;
+    background: rgba(150, 0, 0, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(150, 0, 0, 0.3);
+}
+
+.infoCard.negative .change.positive {
+    background: rgba(0, 150, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 150, 0, 0.3);
+}
+
+.infoCard.negative .change.negative {
+    background-color: transparent;
+    background: rgba(150, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(150, 0, 0, 0.3);
 }
 
 .change .icon {
@@ -78,21 +114,57 @@
 
 .controls {
     display: flex;
-    justify-content: end;
-    gap: 1rem;
-    min-height: var(--icon-size);
 }
 
-.controls small {
-    font-size: var(--small);
-}
-
-.controls a {
+.controls .last-updated {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    gap: 1rem;
+    justify-content: space-between;
     align-items: center;
+    font-size: var(--extra-small);
 }
 
-.controls .icon-link.source {
-    padding-inline: 0;
+.controls .last-updated a {
+    padding: 0.5rem;
+    border-radius: 0.25rem !important;
+    background-color: var(--downColor);
+}
+
+@media screen and (max-width: 525px) {
+    .infoCard-display {
+        padding-inline: 0rem;
+    }
+
+    .infoCard-display .infoCard .infoCard-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0rem;
+    }
+
+    .infoCard-display .infoCard .infoCard-header h3 {
+        width: 100%;
+        text-align: center;
+        font-size: var(--extra-large);
+    }
+
+    .infoCard-display .infoCard .change {
+        display: initial;
+        text-align: center;
+    }
+
+    .infoCard-display .infoCard .change .measure-date {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 525px) {
+    .infoCard-display .infoCard .change {
+        font-size: initial;
+    }
+
+    .controls .last-updated {
+        font-size: initial;
+    }
 }

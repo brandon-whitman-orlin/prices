@@ -1,5 +1,5 @@
 .home {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     display: grid;
     background-color: var(--background);
@@ -25,8 +25,10 @@
 }
 
 .main {
-    width: 100%;
-    padding: min(5%, 10rem) min(10%, 20rem);
+    --heroTextPadding: 2rem;
+    width: fit-content;
+    max-width: 100vw;
+    padding: 1rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -36,59 +38,30 @@
 }
 
 .main .hero-text {
-    font-size: calc(var(--extra-extra-extra-extra-large) + 3rem);
-}
-    /* .main .hero-text {
-        font-size: var(--extra-extra-large);
-    }
-
-    .main {
-        padding: 0;
-        padding-inline: 1rem;
-        margin-top: 5rem;
-    }
-
-    .main > h3 {
-        margin-block: 2.5rem;
-        font-size: var(--large);
-    } */
-@media screen and (max-width: 1059px) {
-    .main .hero-text {
-        font-size: calc(var(--extra-extra-extra-extra-large) + 1rem);
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
 }
 
-@media screen and (max-width: 675px) {
-    .main .hero-text {
-        font-size: var(--extra-extra-extra-extra-large);
-    }
+.main .hero-text h1, .main .hero-text p {
+    max-width: 70ch;
 }
 
-@media screen and (max-width: 550px) {
-    .main > h3 {
-        font-size: var(--extra-large);
-    }
+.main .hero-text .hero-h1 {
+    margin-block: var(--heroTextPadding);
 }
 
-@media screen and (max-width: 475px) {
-    .main .hero-text {
-        font-size: var(--extra-extra-extra-large);
-    }
+.main .hero-text h1 {
+    font-size: var(--extra-extra-large);
 }
 
-@media screen and (max-width: 400px) {
-    .main .hero-text {
-        font-size: var(--extra-large);
-    }
-
-    .main > h3 {
-        font-size: var(--medium);
-    }
-}
-
-
-.main > h1, .main > h3 {
+.main .hero-text {
     text-align: center;
+    width: 100%;
+    word-wrap: normal;
 }
 
 .main .placeholder-notice {
@@ -107,7 +80,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
     justify-content: center;
     align-items: center;
     gap: 1rem;
@@ -118,57 +90,22 @@
     width: 100%;
 }
 
-@media screen and (max-width: 900px) {
-    .main .infoCard-display {
-        padding-inline: 0rem;
+@media screen and (min-width: 400px) {
+    .main {
+        --heroTextPadding: 3rem;
+    }
+    
+    .main .hero-text h1 {
+        font-size: var(--extra-extra-extra-large);
     }
 }
 
-@media screen and (max-width: 500px) {
-    .main .infoCard-display {
-        padding-inline: 0rem;
+@media screen and (min-width: 500px) {
+    .main {
+        --heroTextPadding: 4rem;
     }
-
-    .main .infoCard-display .infoCard .infoCard-header {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0rem;
-    }
-
-    .main .infoCard-display .infoCard .infoCard-header h3 {
-        width: 100%;
-        text-align: center;
+    
+    .main .hero-text h1 {
+        font-size: var(--extra-extra-extra-extra-large);
     }
 }
-
-/* @media screen and (max-width: 800px) {
-    :root {
-        --font-scale: 1 !important;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .home {
-        padding: 1rem;
-    }
-
-    .home .infoCard .controls small {
-        font-size: var(--p);
-    }
-
-    :root {
-        --font-scale: 0.75 !important;
-        --icon-size: 1.25rem;
-    }
-}
-
-@media screen and (max-width: 375px) {
-    .home {
-        padding: 0.5rem;
-    }
-
-    :root {
-        --font-scale: 0.5 !important;
-        --icon-size: 1rem;
-    }
-} */
