@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 
+import peopleData from '../../backend/people.json';
+import Person from '../../components/person/Person';
+
 import Navbar from "../../components/navbar/Navbar";
 import InfoCard from "../../components/infocard/InfoCard";
+import PromiseCard from "../../components/promisecard/PromiseCard";
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 import axios from "axios";
 
-const LOCAL_MODE = true; // Toggle this to true for local mode
+const LOCAL_MODE = true;
 
 function Home() {
   const [gasData, setGasData] = useState(null);
@@ -225,16 +229,37 @@ function Home() {
       <main className="main">
         <div className="hero-text">
           <div className="hero-h1">
-            <h1>POLITICIANS LIE.</h1>
-            <h1>WE DON'T.</h1>
+            <h1>Politicians make promises.</h1>
+            <h1>We track 'em.</h1>
           </div>
           <p>Political promises aren't just words—they're strategic tools of manipulation. We're your weapon against political deceit.</p>
           {LOCAL_MODE ? <p className="placeholder-notice">This is placeholder data. Do not take any information displayed on this site as fact.</p> : null}
         </div>
         <div className="infoCard-display">
-          <InfoCard info={gasData} />
+          {/* <InfoCard info={gasData} />
           <InfoCard info={eggData} />
-          <InfoCard info={unemploymentData} />
+          <InfoCard info={unemploymentData} /> */}
+          <PromiseCard
+          quote="Every American will get $1000"
+          speaker="Donald Trump"
+          quoteSource="in an interview"
+          articleLink="https://example.com"
+          accuracy={0}
+          />
+          <PromiseCard
+          quote="The Earth will explode in 2 days"
+          speaker="Barack Obama"
+          quoteSource="in a speech"
+          articleLink="https://example.com"
+          accuracy={100}
+          />
+          <PromiseCard
+          quote="Space is not real"
+          speaker="Elon Musk"
+          quoteSource="in a tweet"
+          articleLink="https://example.com"
+          accuracy={50}
+          />
         </div>
       </main>
       <footer className="footer"></footer>

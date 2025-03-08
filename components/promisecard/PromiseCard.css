@@ -1,0 +1,218 @@
+.promise-card {
+    --themeBorder: 1px solid rgba(255, 255, 255, 0.125);
+    --borderRadius: 12px;
+    padding: var(--padding);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 45rem;
+    width: 100%;
+    gap: 0.5rem;
+
+    backdrop-filter: blur(1px) saturate(180%);
+    -webkit-backdrop-filter: blur(1px) saturate(180%);
+    border-radius: var(--borderRadius) !important;
+    border: var(--themeBorder);
+    container-type: inline-size;
+}
+
+@media (prefers-color-scheme: dark) {
+    .promise-card {
+        --themeBorder: 1px solid rgba(255, 255, 255, 0.125);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .promise-card {
+        --themeBorder: 1px solid rgba(209, 213, 219, 0.3);
+    }
+}
+
+.promise-card .quote-and-speaker {
+    display: flex;
+    align-items: start;
+    position: relative;
+    width: 100%;
+}
+
+.promise-card .quote-and-speaker .quote-and-quote-source  {
+    width: 100%;
+    position: relative;
+    margin-left: 4rem;
+}
+
+.promise-card .quote-and-speaker .quote-and-quote-source .speaker {
+    font-size: var(--large);
+    background-color: var(--text);
+    color: var(--background);
+    border: var(--themeBorder);
+    border-radius: 0 calc(var(--borderRadius) / 2) calc(var(--borderRadius) / 2) 0;
+    padding: 0.5rem 1rem 0.5rem 2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0px 8px 10px -5px #000000;
+    -webkit-box-shadow: 0px 8px 10px -5px #000000; 
+    font-weight: 400;
+}
+
+.promise-card .quote-and-speaker .quote-and-quote-source .speaker .said {
+    font-size: var(--large);
+}
+
+.promise-card .quote-and-speaker .speaker-image-wrapper {
+    border-radius: calc(var(--borderRadius) / 2) !important;
+    width: 5rem;
+    height: 5rem;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    border: 2px solid var(--text);
+    z-index: 4;
+}
+
+.promise-card .quote-and-speaker .speaker-image {
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    z-index: 3;
+}
+
+.promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote {
+    background-color: var(--background);
+    border: var(--themeBorder);
+    border-radius: 0 0 calc(var(--borderRadius) / 2) calc(var(--borderRadius) / 2);
+    font-size: var(--large);
+    padding: 1rem 1rem 0.5rem 2rem;
+    transform: translateY(-.5rem) translateX(-.5rem);
+    height: fit-content;
+    font-weight: 700;
+    quotes: none;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    z-index: 1;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote .quote-source {
+    font-size: var(--small);
+    text-transform: uppercase;
+    padding-left: 1ch;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.promise-card .quote-accuracy {
+    width: fit-content;
+    font-size: var(--extra-extra-extra-extra-large);
+
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px) saturate(180%);
+    -webkit-backdrop-filter: blur(1px) saturate(180%);
+    border-radius: calc(var(--borderRadius) / 2);
+    padding: 1rem;
+}
+
+.promise-card .quote-accuracy.accurate {
+    background: rgba(0, 150, 0, 0.2);
+    border: 1px solid rgba(0, 150, 0, 0.3);
+}
+
+.promise-card .quote-accuracy.inaccurate {
+    background: rgba(150, 0, 0, 0.2);
+    border: 1px solid rgba(150, 0, 0, 0.3);
+}
+
+.promise-card .quote-accuracy.inconclusive {
+    background: rgba(150, 150, 150, 0.2);
+    border: 1px solid rgba(150, 150, 150, 0.3);
+}
+
+.promise-card:hover, .promise-card:focus-visible {
+    color: initial;
+    box-shadow: 0px 8px 10px -5px #000000;
+    -webkit-box-shadow: 0px 8px 10px -5px #000000;
+}
+
+.promise-card:focus-visible {
+    background-color: initial !important;
+    outline: 0.5rem solid var(--primary);
+    outline-offset: -1px;
+}
+
+@media screen and (max-width: 500px) {
+    .promise-card .quote-and-speaker .quote-and-quote-source {
+        display: initial;
+    }
+
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote {
+        font-size: var(--small);
+        display: inline-block;
+    }
+
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote .quote-source {
+        font-size: calc(var(--extra-small) - 0.15rem);
+        margin-left: unset;
+    }
+}
+
+@media screen and (max-width: 429px) {
+    .promise-card .quote-accuracy {
+        font-size: var(--large);
+    }
+
+    .promise-card .quote-and-speaker {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .promise-card .quote-and-speaker .quote-and-quote-source {
+        margin-left: unset;
+        transform: translateY(-.5rem);
+    }
+
+    
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker {
+        font-size: var(--medium);
+        border-radius: calc(var(--borderRadius) / 2);
+        padding: 1rem 1rem 0.5rem 1rem;
+    }
+
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote {
+        transform: translateY(-.5rem) translateX(0);
+        padding: 1rem 1rem 0.5rem 1rem;
+    }
+    
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker .said {
+        font-size: var(--medium);
+    }
+
+    .promise-card .quote-and-speaker .speaker-image-wrapper {
+        border-radius: calc(var(--borderRadius) / 2) !important;
+        width: 5rem;
+        height: 5rem;
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        border: 2px solid var(--text);
+        z-index: 4;
+    }
+
+    .promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote .quote-source {
+        all: unset;
+        padding-left: 1ch;
+        font-size: calc(var(--extra-small) - 0.15rem);
+        text-transform: uppercase;
+    }
+}

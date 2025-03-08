@@ -271,8 +271,8 @@ a:hover,
 button:hover,
 a:focus-visible,
 button:focus-visible {
-  --highlightColor: var(--accent);
-  --highlightInverse: white;
+  --highlightColor: var(--text);
+  --highlightInverse: var(--primary);
 
 
   cursor: pointer;

@@ -56,6 +56,7 @@
 
 .main .hero-text h1 {
     font-size: var(--extra-extra-large);
+    text-transform: uppercase;
 }
 
 .main .hero-text {
