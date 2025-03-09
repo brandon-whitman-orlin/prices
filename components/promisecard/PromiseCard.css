@@ -169,7 +169,7 @@
 
 .promise-card:focus-visible {
     background-color: initial !important;
-    outline: 0.5rem solid var(--primary);
+    outline: 0.25rem solid var(--accent);
     outline-offset: -1px;
 }
 

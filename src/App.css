@@ -268,12 +268,16 @@ svg {
 }
 
 a:hover,
-button:hover,
-a:focus-visible,
-button:focus-visible {
-  --highlightColor: var(--background);
-  --highlightInverse: var(--primary);
+button:hover {
+  --highlightColor: var(--accent);
 
+  cursor: pointer;
+  color: var(--highlightColor);
+}
+
+.navbar.scrolled a:hover,
+.navbar.scrolled button:hover {
+  --highlightColor: var(--background);
 
   cursor: pointer;
   color: var(--highlightColor);
@@ -281,6 +285,10 @@ button:focus-visible {
 
 a:focus-visible,
 button:focus-visible {
+  --highlightInverse: var(--accent);
+  --highlightColor: var(--background);
+
+  color: var(--highlightColor);
   outline: 0.5rem solid var(--highlightInverse);
   outline-offset: -1px;
   background-color: var(--highlightInverse) !important;

@@ -74,20 +74,20 @@
 
 @media (prefers-color-scheme: dark) {
     .navbar.scrolled {
-        background: rgba(2, 23, 20, 0.6);
+        background: rgba(169, 43, 233, 0.6);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
-        outline: 2px solid rgba(2, 23, 20, 0.9);
+        outline: 2px solid rgba(169, 43, 233, 0.9);
     }
 }
 
 @media (prefers-color-scheme: light) {
     .navbar.scrolled {
-        background: rgba(231, 253, 248, 0.6);
+        background: rgba(149, 22, 212, 0.6);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
-        outline: 2px solid rgba(231, 253, 248, 0.9);
+        outline: 2px solid rgba(149, 22, 212, 0.9);
     }
 }
