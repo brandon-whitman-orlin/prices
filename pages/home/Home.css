@@ -9,9 +9,20 @@
     align-content: space-between;
 
     position: relative;
-    background-image: url('/assets/images/background.svg');
 
     max-width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+    .home {
+        background-image: url('/assets/images/background-dark.svg');
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .home {
+        background-image: url('/assets/images/background-light.svg');
+    }
 }
 
 .header {

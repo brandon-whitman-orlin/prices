@@ -35,11 +35,11 @@ const PromiseCard = ({ quote, speaker, quoteSource, articleLink, accuracy }) => 
       </div>
       <div className={`quote-accuracy ${accuracyClass}`}>
         {accuracy === 100 ? (
-          <span>😀 Accurate </span>
+          <span className="accuracy"><span className="accuracy-emoji">😀</span><span className="accuracy-text">Accurate</span></span>
         ) : accuracy === 0 ? (
-          <span>😠 Inaccurate </span>
+          <span className="accuracy"><span className="accuracy-emoji">😠</span><span className="accuracy-text">Inaccurate</span></span>
         ) : (
-          <span>😐 Inconclusive</span>
+          <span className="accuracy"><span className="accuracy-emoji">😐</span><span className="accuracy-text">Inconclusive</span></span>
         )}
       </div>
     </a>

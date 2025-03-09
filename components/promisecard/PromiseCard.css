@@ -22,12 +22,14 @@
 @media (prefers-color-scheme: dark) {
     .promise-card {
         --themeBorder: 1px solid rgba(255, 255, 255, 0.125);
+        background-color: rgba(0, 0, 0, 0.25);
     }
 }
 
 @media (prefers-color-scheme: light) {
     .promise-card {
         --themeBorder: 1px solid rgba(209, 213, 219, 0.3);
+        background-color: rgba(255, 255, 255, 0.25);
     }
 }
 
@@ -124,6 +126,10 @@
     padding: 1rem;
 }
 
+.promise-card .quote-accuracy .accuracy .accuracy-emoji {
+    display: inline-block;
+}
+
 .promise-card .quote-accuracy.accurate {
     background: rgba(0, 150, 0, 0.2);
     border: 1px solid rgba(0, 150, 0, 0.3);
@@ -142,7 +148,23 @@
 .promise-card:hover, .promise-card:focus-visible {
     color: initial;
     box-shadow: 0px 8px 10px -5px #000000;
-    -webkit-box-shadow: 0px 8px 10px -5px #000000;
+    -webkit-box-shadow: 0px 8px 10px -5px var(--text);
+}
+
+.promise-card:hover .quote-accuracy .accuracy .accuracy-emoji, .promise-card:focus-visible .quote-accuracy .accuracy .accuracy-emoji {
+    animation: sway 1s linear infinite;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
 }
 
 .promise-card:focus-visible {
