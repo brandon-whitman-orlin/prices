@@ -86,6 +86,7 @@
 
 .promise-card .quote-and-speaker .quote-and-quote-source .speaker-quote {
     background-color: var(--background);
+    color: var(--text);
     border: var(--themeBorder);
     border-radius: 0 0 calc(var(--borderRadius) / 2) calc(var(--borderRadius) / 2);
     font-size: var(--large);
@@ -112,6 +113,7 @@
 
 .promise-card .quote-accuracy {
     width: fit-content;
+    color: var(--text);
     font-size: var(--extra-extra-extra-extra-large);
 
     backdrop-filter: blur(1px);
@@ -214,5 +216,6 @@
         padding-left: 1ch;
         font-size: calc(var(--extra-small) - 0.15rem);
         text-transform: uppercase;
+        color: var(--text);
     }
 }
