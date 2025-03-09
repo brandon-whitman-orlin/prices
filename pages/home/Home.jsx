@@ -223,7 +223,7 @@ function Home() {
             </a>,
             <a href="/contact">Contact</a>,
           ]}
-          name="PoliticalPromises"
+          name="PoliticianPromises"
         />
       </header>
       <main className="main">
