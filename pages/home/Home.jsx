@@ -12,7 +12,7 @@ const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 import axios from "axios";
 
-const LOCAL_MODE = true;
+const LOCAL_MODE = false;
 
 function Home() {
   const [gasData, setGasData] = useState(null);
@@ -20,195 +20,195 @@ function Home() {
 
   const [unemploymentData, setUnemploymentData] = useState(null);
 
-  useEffect(() => {
-    // If LOCAL_MODE is true, we won't fetch data from the backend
-    if (LOCAL_MODE) {
-      setGasData({
-        title: "Gasoline Prices",
-        desire: "negative",
-        inauguration: "01-13-2025",
-        description:
-          "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
-        sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
-        sign: "$",
-        units: "per Gallon",
-        frequency: "week",
-        lastUpdated: "12-01-2024",
-        lastMeasure: "11-24-2024",
-        currentMeasure: 3.5,
-        dailyChange: "-0.15",
-        inaugurationPercentageChange: "5.0",
-      });
+  // useEffect(() => {
+  //   // If LOCAL_MODE is true, we won't fetch data from the backend
+  //   if (LOCAL_MODE) {
+  //     setGasData({
+  //       title: "Gasoline Prices",
+  //       desire: "negative",
+  //       inauguration: "01-13-2025",
+  //       description:
+  //         "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
+  //       sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
+  //       sign: "$",
+  //       units: "per Gallon",
+  //       frequency: "week",
+  //       lastUpdated: "12-01-2024",
+  //       lastMeasure: "11-24-2024",
+  //       currentMeasure: 3.5,
+  //       dailyChange: "-0.15",
+  //       inaugurationPercentageChange: "5.0",
+  //     });
 
-      setEggData({
-        title: "Egg Prices",
-        desire: "negative",
-        inauguration: "12-01-2024",
-        description:
-          "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
-        sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
-        sign: "$",
-        units: "a Dozen",
-        frequency: "month",
-        lastUpdated: "12-01-2024",
-        lastMeasure: "11-01-2024",
-        currentMeasure: 2.8,
-        dailyChange: "-0.05",
-        inaugurationPercentageChange: "4.0",
-      });
+  //     setEggData({
+  //       title: "Egg Prices",
+  //       desire: "negative",
+  //       inauguration: "12-01-2024",
+  //       description:
+  //         "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
+  //       sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
+  //       sign: "$",
+  //       units: "a Dozen",
+  //       frequency: "month",
+  //       lastUpdated: "12-01-2024",
+  //       lastMeasure: "11-01-2024",
+  //       currentMeasure: 2.8,
+  //       dailyChange: "-0.05",
+  //       inaugurationPercentageChange: "4.0",
+  //     });
 
-      setUnemploymentData({
-        title: "Unemployment",
-        desire: "positive",
-        inauguration: "12-01-2024",
-        description:
-          "The unemployment rate is the percentage of the civilian labor force (16+), residing in the 50 states or D.C., who are unemployed.",
-        sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
-        sign: "%",
-        units: "",
-        frequency: "month",
-        lastUpdated: "12-01-2024",
-        lastMeasure: "11-01-2024",
-        currentMeasure: 3.7,
-        dailyChange: "-0.1",
-        inaugurationPercentageChange: "0.2",
-      });
-    } else {
-      fetchGasData();
-      fetchEggData();
-      fetchUnemploymentData();
-    }
+  //     setUnemploymentData({
+  //       title: "Unemployment",
+  //       desire: "positive",
+  //       inauguration: "12-01-2024",
+  //       description:
+  //         "The unemployment rate is the percentage of the civilian labor force (16+), residing in the 50 states or D.C., who are unemployed.",
+  //       sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
+  //       sign: "%",
+  //       units: "",
+  //       frequency: "month",
+  //       lastUpdated: "12-01-2024",
+  //       lastMeasure: "11-01-2024",
+  //       currentMeasure: 3.7,
+  //       dailyChange: "-0.1",
+  //       inaugurationPercentageChange: "0.2",
+  //     });
+  //   } else {
+  //     fetchGasData();
+  //     fetchEggData();
+  //     fetchUnemploymentData();
+  //   }
 
-    const fetchGasData = async () => {
-      try {
-        const response = await axios.get(`${backendURL}/api/gas`);
+  //   const fetchGasData = async () => {
+  //     try {
+  //       const response = await axios.get(`${backendURL}/api/gas`);
 
-        // Extract and transform API response
-        const {
-          currentGasPrice,
-          mostRecentGasMeasure,
-          lastGasMeasure,
-          dailyGasPercentageChange,
-          inaugurationGasDate,
-          inaugurationGasPercentageChange,
-        } = response.data;
+  //       // Extract and transform API response
+  //       const {
+  //         currentGasPrice,
+  //         mostRecentGasMeasure,
+  //         lastGasMeasure,
+  //         dailyGasPercentageChange,
+  //         inaugurationGasDate,
+  //         inaugurationGasPercentageChange,
+  //       } = response.data;
 
-        // Combine hardcoded and dynamic values
-        const gasData = {
-          title: "Gasoline Prices",
-          desire: "negative",
-          inauguration: inaugurationGasDate,
-          description:
-            "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
-          sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
-          sign: "$",
-          units: "per Gallon",
-          frequency: "week",
+  //       // Combine hardcoded and dynamic values
+  //       const gasData = {
+  //         title: "Gasoline Prices",
+  //         desire: "negative",
+  //         inauguration: inaugurationGasDate,
+  //         description:
+  //           "Regular gasoline is a type of unleaded gasoline with an octane rating of 87. It's the most common type of gasoline used in the world.",
+  //         sourceUrl: "https://www.eia.gov/petroleum/gasdiesel/",
+  //         sign: "$",
+  //         units: "per Gallon",
+  //         frequency: "week",
 
-          lastUpdated: mostRecentGasMeasure,
-          lastMeasure: lastGasMeasure,
+  //         lastUpdated: mostRecentGasMeasure,
+  //         lastMeasure: lastGasMeasure,
 
-          currentMeasure: currentGasPrice,
-          dailyChange: dailyGasPercentageChange.toFixed(2),
+  //         currentMeasure: currentGasPrice,
+  //         dailyChange: dailyGasPercentageChange.toFixed(2),
 
-          inaugurationPercentageChange:
-            inaugurationGasPercentageChange.toFixed(2),
-        };
+  //         inaugurationPercentageChange:
+  //           inaugurationGasPercentageChange.toFixed(2),
+  //       };
 
-        setGasData(gasData);
-      } catch (error) {
-        console.error("Error fetching Gas data:", error);
-      }
-    };
+  //       setGasData(gasData);
+  //     } catch (error) {
+  //       console.error("Error fetching Gas data:", error);
+  //     }
+  //   };
 
-    const fetchEggData = async () => {
-      try {
-        const response = await axios.get(`${backendURL}/api/egg`);
+  //   const fetchEggData = async () => {
+  //     try {
+  //       const response = await axios.get(`${backendURL}/api/egg`);
 
-        // Extract and transform API response
-        const {
-          currentEggPrice,
-          mostRecentEggMeasure,
-          lastEggMeasure,
-          dailyEggPercentageChange,
-          inaugurationEggDate,
-          inaugurationEggPercentageChange,
-        } = response.data;
+  //       // Extract and transform API response
+  //       const {
+  //         currentEggPrice,
+  //         mostRecentEggMeasure,
+  //         lastEggMeasure,
+  //         dailyEggPercentageChange,
+  //         inaugurationEggDate,
+  //         inaugurationEggPercentageChange,
+  //       } = response.data;
 
-        // Combine hardcoded and dynamic values
-        const eggData = {
-          title: "Egg Prices",
-          desire: "negative",
-          inauguration: inaugurationEggDate,
-          description:
-            "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
-          sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
-          sign: "$",
-          units: "a Dozen",
-          frequency: "month",
+  //       // Combine hardcoded and dynamic values
+  //       const eggData = {
+  //         title: "Egg Prices",
+  //         desire: "negative",
+  //         inauguration: inaugurationEggDate,
+  //         description:
+  //           "Large white, Grade A chicken eggs, sold in a carton of a dozen. Includes organic, non-organic, cage free, free range, and traditional.",
+  //         sourceUrl: "https://fred.stlouisfed.org/seriesBeta/APU0000708111",
+  //         sign: "$",
+  //         units: "a Dozen",
+  //         frequency: "month",
 
-          lastUpdated: mostRecentEggMeasure,
-          lastMeasure: lastEggMeasure,
+  //         lastUpdated: mostRecentEggMeasure,
+  //         lastMeasure: lastEggMeasure,
 
-          currentMeasure: currentEggPrice,
-          dailyChange: dailyEggPercentageChange.toFixed(2),
+  //         currentMeasure: currentEggPrice,
+  //         dailyChange: dailyEggPercentageChange.toFixed(2),
 
-          inaugurationPercentageChange:
-            inaugurationEggPercentageChange.toFixed(2),
-        };
+  //         inaugurationPercentageChange:
+  //           inaugurationEggPercentageChange.toFixed(2),
+  //       };
 
-        setEggData(eggData);
-      } catch (error) {
-        console.error("Error fetching Egg data:", error);
-      }
-    };
+  //       setEggData(eggData);
+  //     } catch (error) {
+  //       console.error("Error fetching Egg data:", error);
+  //     }
+  //   };
 
-    const fetchUnemploymentData = async () => {
-      try {
-        const response = await axios.get(`${backendURL}/api/unemployment`);
+  //   const fetchUnemploymentData = async () => {
+  //     try {
+  //       const response = await axios.get(`${backendURL}/api/unemployment`);
 
-        // Extract and transform API response
-        const {
-          currentUnemploymentRate,
-          mostRecentUnemploymentMeasure,
-          lastUnemploymentMeasure,
-          dailyUnemploymentPercentageChange,
-          inaugurationUnemploymentDate,
-          inaugurationUnemploymentPercentageChange,
-        } = response.data;
+  //       // Extract and transform API response
+  //       const {
+  //         currentUnemploymentRate,
+  //         mostRecentUnemploymentMeasure,
+  //         lastUnemploymentMeasure,
+  //         dailyUnemploymentPercentageChange,
+  //         inaugurationUnemploymentDate,
+  //         inaugurationUnemploymentPercentageChange,
+  //       } = response.data;
 
-        // Combine hardcoded and dynamic values
-        const unemploymentData = {
-          title: "Unemployment",
-          desire: "negative",
-          inauguration: inaugurationUnemploymentDate,
-          description:
-            "The unemployment rate is the percentage of the civilian labor force (16+), residing in the 50 states or D.C., who are unemployed.",
-          sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
-          sign: "%",
-          units: "",
-          frequency: "month",
+  //       // Combine hardcoded and dynamic values
+  //       const unemploymentData = {
+  //         title: "Unemployment",
+  //         desire: "negative",
+  //         inauguration: inaugurationUnemploymentDate,
+  //         description:
+  //           "The unemployment rate is the percentage of the civilian labor force (16+), residing in the 50 states or D.C., who are unemployed.",
+  //         sourceUrl: "https://fred.stlouisfed.org/seriesBeta/UNRATE",
+  //         sign: "%",
+  //         units: "",
+  //         frequency: "month",
 
-          lastUpdated: mostRecentUnemploymentMeasure,
-          lastMeasure: lastUnemploymentMeasure,
+  //         lastUpdated: mostRecentUnemploymentMeasure,
+  //         lastMeasure: lastUnemploymentMeasure,
 
-          currentMeasure: currentUnemploymentRate,
-          dailyChange: dailyUnemploymentPercentageChange.toFixed(2),
+  //         currentMeasure: currentUnemploymentRate,
+  //         dailyChange: dailyUnemploymentPercentageChange.toFixed(2),
 
-          inaugurationPercentageChange:
-            inaugurationUnemploymentPercentageChange.toFixed(2),
-        };
+  //         inaugurationPercentageChange:
+  //           inaugurationUnemploymentPercentageChange.toFixed(2),
+  //       };
 
-        setUnemploymentData(unemploymentData);
-      } catch (error) {
-        console.error("Error fetching Unemployment data:", error);
-      }
-    };
-  }, []);
+  //       setUnemploymentData(unemploymentData);
+  //     } catch (error) {
+  //       console.error("Error fetching Unemployment data:", error);
+  //     }
+  //   };
+  // }, []);
 
-  if (!gasData || !eggData || !unemploymentData) {
-    return <div>Loading...</div>;
-  }
+  // if (!gasData || !eggData || !unemploymentData) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="home">
@@ -223,7 +223,7 @@ function Home() {
             </a>,
             <a href="/contact">Contact</a>,
           ]}
-          name="PoliticianPromises"
+          name={<span><span>Politician</span><span>Promises</span></span>}
         />
       </header>
       <main className="main">
@@ -232,7 +232,7 @@ function Home() {
             <h1>Politicians make promises.</h1>
             <h1>We track 'em.</h1>
           </div>
-          <p>Political promises aren't just words—they're strategic tools of manipulation. We're your weapon against political deceit.</p>
+          <p>No opinions. No bias. Just impartial data telling the real story of political promises.</p>
           {LOCAL_MODE ? <p className="placeholder-notice">This is placeholder data. Do not take any information displayed on this site as fact.</p> : null}
         </div>
         <div className="infoCard-display">
@@ -240,25 +240,28 @@ function Home() {
           <InfoCard info={eggData} />
           <InfoCard info={unemploymentData} /> */}
           <PromiseCard
-          quote="Every American will get $1000"
+          quote="End the Russia-Ukraine war within 24 hours"
+          grammar="promised to"
           speaker="Donald Trump"
-          quoteSource="in an interview"
-          articleLink="https://example.com"
+          quoteSource="in a campaign video"
+          articleLink="https://www.youtube.com/watch?v=lWW__4EfHCM"
           accuracy={0}
           />
           <PromiseCard
-          quote="The Earth will explode in 2 days"
+          quote="Close the Guantanamo Bay Detention Center"
+          grammar="promised to"
           speaker="Barack Obama"
-          quoteSource="in a speech"
-          articleLink="https://example.com"
-          accuracy={100}
+          quoteSource="in an executive order"
+          articleLink="https://obamawhitehouse.archives.gov/blog/2016/02/23/president-obamas-plan-close-Guantanamo-about-closing-chapter-history"
+          accuracy={0}
           />
           <PromiseCard
-          quote="Space is not real"
+          quote="Reduce government spending by $2 trillion"
+          grammar="promised to"
           speaker="Elon Musk"
-          quoteSource="in a tweet"
-          articleLink="https://example.com"
-          accuracy={50}
+          quoteSource="during a political rally"
+          articleLink="https://www.bloomberg.com/news/videos/2024-10-28/elon-musk-we-can-cut-2-trillion-from-us-budget-video"
+          accuracy={0}
           />
         </div>
       </main>

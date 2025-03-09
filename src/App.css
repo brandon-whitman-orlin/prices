@@ -271,7 +271,7 @@ a:hover,
 button:hover,
 a:focus-visible,
 button:focus-visible {
-  --highlightColor: var(--text);
+  --highlightColor: var(--background);
   --highlightInverse: var(--primary);
 
 

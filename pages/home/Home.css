@@ -57,7 +57,12 @@
     padding-block: 1rem;
 }
 
-.main .hero-text h1, .main .hero-text p {
+.main .hero-text h1 {
+    max-width: 70ch;
+}
+
+.main .hero-text p {
+    font-size: var(--medium);
     max-width: 70ch;
 }
 
@@ -109,6 +114,10 @@
     
     .main .hero-text h1 {
         font-size: var(--extra-extra-extra-large);
+    }
+
+    .main .hero-text p {
+        font-size: var(--large);
     }
 }
 

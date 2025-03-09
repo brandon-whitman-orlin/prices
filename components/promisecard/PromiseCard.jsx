@@ -3,7 +3,7 @@ import "./PromiseCard.css";
 
 import peopleData from '../../backend/people.json'; // Import the data
 
-const PromiseCard = ({ quote, speaker, quoteSource, articleLink, accuracy }) => {
+const PromiseCard = ({ quote, grammar="said", speaker, quoteSource, articleLink, accuracy }) => {
   // Get the speaker details from peopleData based on the speaker name
   const speakerDetails = peopleData[speaker];
 
@@ -26,10 +26,10 @@ const PromiseCard = ({ quote, speaker, quoteSource, articleLink, accuracy }) => 
     <a className="promise-card" href={articleLink} target="_blank" rel="noopener noreferrer">
       <div className="quote-and-speaker">
         <div className="speaker-image-wrapper" style={{backgroundImage: `url(${speakerDetails.imageLow})`}}>
-            <img className="speaker-image" src={speakerDetails.image} alt={`Picture of ${speaker}`} />
+            <img className="speaker-image" src={speakerDetails.imageSmall} alt={`Picture of ${speaker}`} />
         </div>
         <div className="quote-and-quote-source">
-            <h3 className="speaker">{speaker} <span className="said">said:</span></h3>
+            <h3 className="speaker">{speaker} <span className="said">{grammar}:</span></h3>
             <q className="speaker-quote">"{quote}"<cite className="quote-source">{quoteSource}</cite></q>
         </div>
       </div>

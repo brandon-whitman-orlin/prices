@@ -2,18 +2,21 @@
   "Donald Trump": {
     "image": "/people/DonaldTrump.jpg",
     "imageLow": "/people/DonaldTrump-low.jpg",
+    "imageSmall": "/people/DonaldTrump-small.jpg",
     "description": "45th/47th President of the United States.",
     "wikipedia": "https://en.wikipedia.org/wiki/Donald_Trump"
   },
   "Barack Obama": {
     "image": "/people/BarackObama.jpg",
     "imageLow": "/people/BarackObama-low.jpg",
+    "imageSmall": "/people/BarackObama-small.jpg",
     "description": "44th President of the United States.",
     "wikipedia": "https://en.wikipedia.org/wiki/Barack_Obama"
   },
   "Elon Musk": {
     "image": "/people/ElonMusk.jpg",
     "imageLow": "/people/ElonMusk-low.jpg",
+    "imageSmall": "/people/ElonMusk-small.jpg",
     "description": "Senior Advisor to President Donald Trump.",
     "wikipedia": "https://en.wikipedia.org/wiki/Elon_Musk"
   }

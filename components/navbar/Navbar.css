@@ -12,6 +12,28 @@
     max-width: 100%;
 }
 
+.navbar .site-name span span {
+    color: var(--text);
+    transition: color 0.3s ease-in-out;
+    -webkit-text-stroke: 2px transparent;
+}
+
+.navbar .site-name:hover span span:first-child, .navbar .site-name:focus-visible span span:first-child {
+    color: #E81B23;
+}
+
+.navbar .site-name:hover span span:last-child, .navbar .site-name:focus-visible span span:last-child {
+    color: #00AEF3;
+}
+
+.navbar .site-name:focus-visible span span:first-child {
+    -webkit-text-stroke: 1px var(--background);
+}
+
+.navbar .site-name:focus-visible span span:last-child {
+    -webkit-text-stroke: 1px var(--background);
+}
+
 @media screen and (max-width: 755px) {
     .navbar {
         padding: 0.25rem;
@@ -54,8 +76,8 @@
     .navbar.scrolled {
         background: rgba(2, 23, 20, 0.6);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
         outline: 2px solid rgba(2, 23, 20, 0.9);
     }
 }
@@ -64,8 +86,8 @@
     .navbar.scrolled {
         background: rgba(231, 253, 248, 0.6);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
         outline: 2px solid rgba(231, 253, 248, 0.9);
     }
 }
