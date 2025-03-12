@@ -218,10 +218,16 @@ function Home() {
             <a href="/" className="active">
               Home
             </a>,
-            <a href="/about" className="custom-class">
+            <a href="/about">
               About
             </a>,
             <a href="/contact">Contact</a>,
+            <div className="dropdown div-button" tabIndex={0}>Options <span className="dropdown-caret"></span>
+              <ul className="dropdown-menu">
+                <li><button className="dropdown-option">Theme</button></li>
+                <li><button className="dropdown-option">Language</button></li>
+              </ul>
+            </div>
           ]}
           name={<span><span>Politician</span><span>Promises</span></span>}
         />
