@@ -58,6 +58,7 @@
 
     .navbar .nav-list .nav-item > *{
         font-size: var(--medium) !important;
+        padding: 0rem !important;
     }
 
     .navbar .nav-list .nav-item a {
