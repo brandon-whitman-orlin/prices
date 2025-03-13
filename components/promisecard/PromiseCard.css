@@ -1,5 +1,4 @@
 .promise-card {
-    --themeBorder: 1px solid rgba(255, 255, 255, 0.5);
     --borderRadius: 12px;
     padding: var(--padding);
     color: var(--text);
@@ -21,15 +20,13 @@
 
 @media (prefers-color-scheme: dark) {
     .promise-card {
-        --themeBorder: 1px solid rgba(255, 255, 255, 0.25);
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: var(--promiseCardBG);
     }
 }
 
 @media (prefers-color-scheme: light) {
     .promise-card {
-        --themeBorder: 1px solid rgba(209, 213, 219, 0.75);
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: var(--promiseCardBG);
     }
 }
 
@@ -55,8 +52,6 @@
     padding: 0.5rem 1rem 0.5rem 2rem;
     position: relative;
     z-index: 2;
-    box-shadow: 0px 8px 10px -5px #000000;
-    -webkit-box-shadow: 0px 8px 10px -5px #000000; 
     font-weight: 400;
 }
 
@@ -131,24 +126,18 @@
 }
 
 .promise-card .quote-accuracy.accurate {
-    background: rgba(0, 150, 0, 0.2);
-    border: 1px solid rgba(0, 150, 0, 0.3);
+    background: var(--accurateBG);
+    border: var(--accurateBorder);
 }
 
 .promise-card .quote-accuracy.inaccurate {
-    background: rgba(150, 0, 0, 0.2);
-    border: 1px solid rgba(150, 0, 0, 0.3);
+    background: var(--inaccurateBG);
+    border: var(--inaccurateBorder);
 }
 
 .promise-card .quote-accuracy.inconclusive {
-    background: rgba(150, 150, 150, 0.2);
-    border: 1px solid rgba(150, 150, 150, 0.3);
-}
-
-.promise-card:hover, .promise-card:focus-visible {
-    color: initial;
-    box-shadow: 0px 8px 10px -5px #000000;
-    -webkit-box-shadow: 0px 8px 10px -5px var(--text);
+    background: var(--inconclusiveBG);
+    border: var(--inconclusiveBorder);
 }
 
 .promise-card:hover .quote-accuracy .accuracy .accuracy-emoji, .promise-card:focus-visible .quote-accuracy .accuracy .accuracy-emoji {

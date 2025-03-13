@@ -25,6 +25,18 @@
     }
 }
 
+:root.theme-dark .home {
+        background-image: url('/assets/images/background-dark.svg');
+}
+
+:root.theme-light .home {
+        background-image: url('/assets/images/background-light.svg');
+}
+
+/* :root.theme-forest .home {
+    background-image: url('/assets/images/background-forest.svg');
+} */
+
 .header {
     width: 100%;
     position: sticky;
@@ -103,7 +115,6 @@
 }
 
 .footer {
-    background-color: green;
     width: 100%;
 }
 

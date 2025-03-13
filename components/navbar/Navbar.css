@@ -20,11 +20,11 @@
 }
 
 .navbar .site-name:hover span span:first-child, .navbar .site-name:focus-visible span span:first-child {
-    color: #E81B23;
+    color: var(--brandRed);
 }
 
 .navbar .site-name:hover span span:last-child, .navbar .site-name:focus-visible span span:last-child {
-    color: #00AEF3;
+    color: var(--brandBlue);
 }
 
 .navbar .site-name:focus-visible span span:first-child {
@@ -89,22 +89,11 @@
     border-radius: 100rem !important;
 }
 
-@media (prefers-color-scheme: dark) {
-    .navbar.scrolled {
-        background: rgba(45, 2, 66, 0.7);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    .navbar.scrolled {
-        background: rgba(149, 22, 212, 0.7);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-    }
+.navbar.scrolled {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background: var(--navbarBG);
+    box-shadow: var(--navbarBorder);
 }
 
 .navbar .nav-list .nav-item .dropdown {

@@ -7,6 +7,8 @@ import Person from '../../components/person/Person';
 import Navbar from "../../components/navbar/Navbar";
 import InfoCard from "../../components/infocard/InfoCard";
 import PromiseCard from "../../components/promisecard/PromiseCard";
+import ThemeChange from "../../components/themechange/ThemeChange";
+import ThemeMenu from "../../components/themechange/ThemeMenu";
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
 
@@ -224,7 +226,7 @@ function Home() {
             <a href="/contact">Contact</a>,
             <div className="dropdown div-button" tabIndex={0}>Options <span className="dropdown-caret"></span>
               <ul className="dropdown-menu">
-                <li><button className="dropdown-option">Theme</button></li>
+                <li><ThemeChange className="dropdown-option"/></li>
                 <li><button className="dropdown-option">Language</button></li>
               </ul>
             </div>
@@ -232,6 +234,7 @@ function Home() {
           name={<span><span>Politician</span><span>Promises</span></span>}
         />
       </header>
+      <ThemeMenu/>
       <main className="main">
         <div className="hero-text">
           <div className="hero-h1">
